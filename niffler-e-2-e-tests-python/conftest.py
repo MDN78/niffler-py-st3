@@ -17,6 +17,7 @@ def app_url():
 
 @pytest.fixture(scope='function', autouse=True)
 def setup_browser(app_url):
+    """Фикстура подготовки и настройки браузера"""
     browser.config.base_url = app_url
     browser.config.window_width = 1920
     browser.config.window_height = 1080
@@ -27,5 +28,6 @@ def setup_browser(app_url):
 
 @pytest.fixture
 def auth_ui():
+    """Фикстура аутентификации пользователя посредством UI интерфейса"""
     auth_page.open_auth_page()
     auth_page.login(os.getenv("TEST_USERNAME"), os.getenv("TEST_PASSWORD"))

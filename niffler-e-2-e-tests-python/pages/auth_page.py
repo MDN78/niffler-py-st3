@@ -19,23 +19,47 @@ class AuthPage():
         self.login_warning = browser.element("form[action='/login'] p")
 
     def open_auth_page(self) -> None:
+        """
+        Метод открытия страницы приложения
+        """
         browser.open('/login')
 
     def login(self, username: str, password: str) -> None:
+        """
+        Метод аутентификации существующего пользователя
+        :param username: Имя пользователя
+        :param password: Пароль пользователя
+        """
         self.username.set_value(username)
         self.password.set_value(password)
         self.submit_button.click()
 
     def open_registration_page(self) -> None:
+        """
+        Метод перехода на страницу регистрации
+        """
         self.register_form.click()
 
     def spending_title_exists(self, title: str) -> None:
+        """
+        Метод проверки заголовка страницы Затрат
+        :param title: наименование заголовка
+        """
         self.spending_title.should(have.text(title))
 
     def spending_bottom_title_exists(self, title: str) -> None:
+        """
+        Метод проверки наличия заголовка нижней части страницы трат
+        :param title: Наименование заголовка
+        """
         self.spending_bottom_title.should(have.text(title))
 
     def registration_user(self, username: str, password: str) -> None:
+        """
+        Метод регистрации нового пользователя
+        :param username: имя нового пользователя
+        :param password: пароль нового пользователя
+        """
         self.register_form.click()
         self.username.set_value(username)
         self.password.set_value(password)
@@ -43,15 +67,31 @@ class AuthPage():
         self.submit_button.click()
 
     def register_form_should_have_title(self, title: str) -> None:
+        """
+        Метод проверки регистрационной формы на предмет наличия заголовка
+        :param title: проверяемый заголовок
+        """
         self.register_form_title.should(have.text(title))
 
     def text_should_be_visible(self, text: str) -> None:
+        """
+        Метод проверки текста после успешной регистрации пользователя
+        :param text: проверяемый текст
+        """
         self.successful_registration.should(have.text(text))
 
     def text_unsuccessful_registration(self, text: str) -> None:
+        """
+        Метод проверки текста после неуспешной регистрации пользователя
+        :param text: проверяемый текст
+        """
         self.unsuccessful_registration.should(have.text(text))
 
     def text_unsuccessful_login(self, text: str) -> None:
+        """
+        Метод проверки предупредительного оповещения о неудачной аутентификации
+        :param text: проверяемый текст
+        """
         self.login_warning.should(have.text(text))
 
 
