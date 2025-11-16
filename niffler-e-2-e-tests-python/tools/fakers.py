@@ -42,7 +42,7 @@ class Fake:
 
         :return: Случайный текст.
         """
-        return self.faker.text()
+        return self.faker.city()
 
     def integer(self, start: int = 1, end: int = 100) -> int:
         """

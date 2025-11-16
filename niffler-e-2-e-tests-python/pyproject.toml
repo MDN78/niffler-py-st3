@@ -11,7 +11,8 @@ dependencies = [
     "pytest (>=9.0.1,<10.0.0)",
     "selene (==2.0.0rc9)",
     "python-dotenv (>=1.2.1,<2.0.0)",
-    "faker (>=38.0.0,<39.0.0)"
+    "faker (>=38.0.0,<39.0.0)",
+    "pytest-xdist (>=3.8.0,<4.0.0)"
 ]
 
 [tool.pytest.ini_options]

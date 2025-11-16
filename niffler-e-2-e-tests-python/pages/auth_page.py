@@ -1,8 +1,7 @@
-from pages.base_page import BasePage
 from selene import browser, have
 
 
-class AuthPage(BasePage):
+class AuthPage():
     """Класс взаимодействия с UI страницей логина и регистрации"""
 
     def __init__(self):
@@ -19,7 +18,7 @@ class AuthPage(BasePage):
 
         self.login_warning = browser.element("form[action='/login'] p")
 
-    def open_login_page(self) -> None:
+    def open_auth_page(self) -> None:
         browser.open('/login')
 
     def login(self, username: str, password: str) -> None:
