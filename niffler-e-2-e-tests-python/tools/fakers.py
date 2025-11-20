@@ -54,5 +54,13 @@ class Fake:
         """
         return self.faker.random_int(start, end)
 
+    def data(self):
+        start_date = "-1y"
+        end_date = "now"
+
+        random_date = self.faker.date_time_between(start_date=start_date, end_date=end_date)
+        formatted_date = random_date.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+        return formatted_date
+
 
 fake = Fake(faker=Faker())

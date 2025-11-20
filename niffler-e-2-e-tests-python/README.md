@@ -11,3 +11,12 @@ bash docker-compose-dev.sh
 ```commandline
 pytest --numprocesses=2
 ```
+
+
+
+#### Notes
+debug devtools
+
+```commandline
+setTimeout('debugger;', 5_000)
+```

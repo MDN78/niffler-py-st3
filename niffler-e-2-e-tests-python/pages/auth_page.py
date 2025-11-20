@@ -18,12 +18,6 @@ class AuthPage():
 
         self.login_warning = browser.element("form[action='/login'] p")
 
-    def open_auth_page(self) -> None:
-        """
-        Метод открытия страницы приложения
-        """
-        browser.open('/login')
-
     def login(self, username: str, password: str) -> None:
         """
         Метод аутентификации существующего пользователя
