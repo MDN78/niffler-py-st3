@@ -11,9 +11,8 @@ class TestAuthentication:
         auth_page.text_should_be_visible("Congratulations! You've registered!")
 
     @Pages.login_page
-    def test_login_user(self, app_user):
-        username, password = app_user
-        auth_page.login(username, password)
+    def test_login_user(self, envs):
+        auth_page.login(envs.test_username, envs.test_password)
         auth_page.spending_title_exists("History of Spendings")
 
     @Pages.login_page

@@ -1,10 +1,10 @@
 import requests
 from urllib.parse import urljoin
 
-from models.spend import SpendAdd, Spend
+from models.category import Category, CategoryAdd
 
 
-class SpendsHttpClient:
+class CategoryHttpClient:
     session: requests.Session
     base_url: str
 
@@ -17,21 +17,15 @@ class SpendsHttpClient:
             "Content-Type": "application/json",
         })
 
-    def add_spends(self, spend: SpendAdd) -> Spend:
-        url = urljoin(self.base_url, "/api/spends/add")
-        response = self.session.post(url, json=spend.model_dump())
+    def get_categories(self) -> list[CategoryAdd]:
+        response = self.session.get(urljoin(self.base_url, '/api/categories/all'))
         self.raise_for_status(response)
-        return Spend.model_validate(response.json())
+        return [CategoryAdd.model_validate(item) for item in response.json()]
 
-    def get_spends(self) -> list[Spend]:
-        response = self.session.get(urljoin(self.base_url, '/api/spends/all'))
+    def add_category(self, category: CategoryAdd) -> Category:
+        response = self.session.post(urljoin(self.base_url, "/api/categories/add"), json=category.model_dump())
         self.raise_for_status(response)
-        return [Spend.model_validate(item) for item in response.json()]
-
-    def remove_spends(self, ids: list[str]) -> None:
-        url = urljoin(self.base_url, "/api/spends/remove")
-        response = self.session.delete(url, params={"ids": ids})
-        self.raise_for_status(response)
+        return Category.model_validate(response.json())
 
     @staticmethod
     def raise_for_status(response: requests.Response):
