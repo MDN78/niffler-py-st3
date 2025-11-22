@@ -76,6 +76,7 @@ class SpendPage():
         Метод проверки описания на странице
         :param description: искомое описание
         """
+        self.spending_body.perform(command.js.scroll_into_view)
         self.spending_body.should(have.text(description))
 
     def check_delete_spending(self, text: str):
@@ -107,7 +108,11 @@ class SpendPage():
 
 
     def delete_spend_after_action(self):
-        self.spending_tb.perform(command.js.scroll_into_view).click()
+        """
+        Метод удаления всех трат после добавления через клиентов
+        """
+        self.checkbox_for_all.perform(command.js.scroll_into_view).click()
+        # self.spending_tb.perform(command.js.scroll_into_view).click()
         self.delete_button.click()
         self.delete_button_approve.press_enter()
         self.spending.should(have.text("There are no spendings"))

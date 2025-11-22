@@ -52,21 +52,39 @@ def auth(envs) -> str:
 
 @pytest.fixture(scope='session')
 def spends_client(envs, auth) -> SpendsHttpClient:
+    """
+    Метод возвращения instance класса SpendsHttpClient
+    :param envs: загрузка данный с env файла
+    :param auth: аутентификация пользователя
+    :return: instance класса SpendsHttpClient
+    """
     return SpendsHttpClient(envs.gateway_url, auth)
 
 
 @pytest.fixture(scope='session')
 def category_client(envs, auth) -> CategoryHttpClient:
+    """
+    Метод возвращения instance класса CategoryHttpClient
+    :param envs: загрузка данный с env файла
+    :param auth: аутентификация пользователя
+    :return: instance  класса CategoryHttpClient
+    """
     return CategoryHttpClient(envs.gateway_url, auth)
 
 
 @pytest.fixture(scope="session")
 def spend_db(envs) -> SpendDb:
+    """
+    Метод возвращения instance класса SpendDb
+    :param envs: загрузка данный с env файла
+    :param auth: аутентификация пользователя
+    :return: instance класса SpendDb
+    """
     return SpendDb(envs.spend_db_url)
 
 
 @pytest.fixture(params=[])
-def category(request, category_client, spend_db):
+def category(request, category_client: CategoryHttpClient, spend_db: SpendDb):
     """
     Метод добавления категории через CategoryHttpClient
     :param request: получение наименования категории
@@ -80,14 +98,14 @@ def category(request, category_client, spend_db):
 
 
 @pytest.fixture(params=[])
-def category_db(request, category_client, spend_db):
+def category_db(request, category_client: CategoryHttpClient, spend_db: SpendDb):
     category = category_client.add_category(request.param)
     yield category
     spend_db.delete_category(category.id)
 
 
 @pytest.fixture(params=[])
-def spends(request, spends_client):
+def spends(request, spends_client:SpendsHttpClient):
     """
     Метод добавления Траты и удаление после теста
     :param request: получение параметров Траты
