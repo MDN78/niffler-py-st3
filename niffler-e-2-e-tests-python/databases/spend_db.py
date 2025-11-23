@@ -4,6 +4,7 @@ from sqlalchemy import create_engine, Engine
 from sqlmodel import Session, select
 
 from models.category import Category
+from models.spend import SpendSQL
 
 
 class SpendDb:
@@ -26,4 +27,9 @@ class SpendDb:
     def get_user_category(self, category_id: str):
         with Session(self.engine) as session:
             statement = select(Category).where(Category.id == category_id)
+            return session.exec(statement).first()
+
+    def get_spend_by_id(self, spend_id: str) -> SpendSQL:
+        with Session(self.engine) as session:
+            statement = select(SpendSQL).where(SpendSQL.id == spend_id)
             return session.exec(statement).first()

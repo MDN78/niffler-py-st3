@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from sqlmodel import SQLModel, Field
+from tools.fakers import fake
 
 
 class Category(SQLModel, table=True):
@@ -10,6 +11,6 @@ class Category(SQLModel, table=True):
 
 
 class CategoryAdd(BaseModel):
-    name: str
+    name: str = Field(default_factory=fake.text)
     username: str | None = None
     archived: bool | None = None
