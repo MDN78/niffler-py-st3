@@ -1,9 +1,8 @@
 import os
-import time
 
 import pytest
 from dotenv import load_dotenv
-from selene import browser
+from selene import browser, be
 
 from clients.spends_client import SpendsHttpClient
 from clients.category_client import CategoryHttpClient
@@ -46,7 +45,7 @@ def auth(envs) -> str:
     browser.element('input[name=username]').set_value(envs.test_username)
     browser.element('input[name=password]').set_value(envs.test_password)
     browser.element('button[type=submit]').click()
-    time.sleep(1)
+    browser.element('[id="spendings"]').should(be.present)
     return browser.driver.execute_script('return window.localStorage.getItem("id_token")')
 
 
@@ -105,7 +104,7 @@ def category_db(request, category_client: CategoryHttpClient, spend_db: SpendDb)
 
 
 @pytest.fixture(params=[])
-def spends(request, spends_client:SpendsHttpClient):
+def spends(request, spends_client: SpendsHttpClient):
     """
     Метод добавления Траты и удаление после теста
     :param request: получение параметров Траты
@@ -145,5 +144,16 @@ def profile_page(auth, envs):
 @pytest.fixture()
 def login_page(envs):
     browser.open(envs.frontend_url)
+    yield
+    browser.quit()
+
+
+@pytest.fixture
+def auth_db(envs):
+    """ Метод авторизации для тестов с базой данных """
+    browser.open(envs.frontend_url)
+    browser.element('input[name=username]').set_value(envs.test_username)
+    browser.element('input[name=password]').set_value(envs.test_password)
+    browser.element('button[type=submit]').click()
     yield
     browser.quit()

@@ -2,7 +2,10 @@ from selene import browser, have, be
 from selenium.webdriver.common.keys import Keys
 
 
-class CategoryPage():
+class CategoryPage:
+    """
+    Класс взаимодействия с UI страницей Категории
+    """
 
     def __init__(self):
         self.person_icon = browser.element('[data-testid="PersonIcon"]')

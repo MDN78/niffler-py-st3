@@ -33,3 +33,10 @@ class SpendDb:
         with Session(self.engine) as session:
             statement = select(SpendSQL).where(SpendSQL.id == spend_id)
             return session.exec(statement).first()
+
+    def get_user_spends(self, username: str):
+        with Session(self.engine) as session:
+            statement = select(SpendSQL, Category).join(Category, SpendSQL.category_id == Category.id).where(
+                SpendSQL.username == username)
+            result = session.exec(statement).all()
+            return result
