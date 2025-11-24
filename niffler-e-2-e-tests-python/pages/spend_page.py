@@ -18,6 +18,16 @@ class SpendPage():
         self.delete_button_approve = browser.element("//div[@role='dialog']//button[contains(text(), 'Delete')]")
         self.spending = browser.element('#spendings')
         self.description_successful_delete_spend = browser.element('//div[.="Spendings succesfully deleted"]')
+        self.spending_body = browser.element('#spendings tbody')
+
+        self.checkbox_for_all = browser.element('thead input[type="checkbox"]')
+        self.successful_delete = browser.element('.Toastify__toast-body div:nth-child(2)')
+
+        self.edit_spending = browser.element('button[type=button][aria-label="Edit spending"]')
+        self.currency = browser.element('#currency')
+        self.select_currency = lambda currency: browser.element(f'//span[.="{currency}"]')
+        self.button_save = browser.element('#save')
+        self.successful_change = browser.element('//div[.="Spending is edited successfully"]')
 
     def check_spending_page_titles(self, text: str):
         """Метод проверки заголовка страницы затрат
@@ -47,8 +57,8 @@ class SpendPage():
             print(f"Найдена ячейка с текстом: {cell.get(query.text)}")
 
     def delete_spend(self, name_category: str) -> None:
-        """Метод удаления затраты по наименованию rfntujhbb
-        :param name_category: yfbvtyjdfybt rfntujhbb
+        """Метод удаления затраты по наименованию категории
+        :param name_category: наименование категории
         """
         self.category_name(name_category).click()
         self.delete_button.click()
@@ -58,6 +68,38 @@ class SpendPage():
         """Метод проверки всплывающего сообщения об успешном действии
         :param text: текст сигнального сообщения"""
         self.description_successful_delete_spend.should(have.text(text))
+
+    def spending_page_should_have_text(self, description: str):
+        """
+        Метод проверки описания на странице
+        :param description: искомое описание
+        """
+        self.spending_body.should(have.text(description))
+
+    def check_delete_spending(self, text: str):
+        """
+        Метод удаления и последующей проверки затрат
+        :param text: текст итогового сообщения
+        """
+        self.checkbox_for_all.click()
+        self.delete_button.click()
+        self.delete_button_approve.click()
+        self.description_successful_delete_spend.should(have.text(text))
+
+    def edit_spending_currency(self, currency: str):
+        """
+        Метод изменения валюты расходов
+        :param currency: желаемая валюта в формате "USD"
+        """
+        self.edit_spending.click()
+        self.currency.click()
+        self.select_currency(currency).click()
+        self.button_save.click()
+
+    def should_be_signal_text(self, text: str) -> None:
+        """Метод проверки всплывающего сообщения об успешном действии
+        :param text: текст сигнального сообщения"""
+        self.successful_change.should(have.text(text))
 
 
 spend_page = SpendPage()
