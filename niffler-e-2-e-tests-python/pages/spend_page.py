@@ -1,4 +1,4 @@
-from selene import browser, have, query
+from selene import browser, have, query, command
 
 
 class SpendPage():
@@ -28,6 +28,8 @@ class SpendPage():
         self.select_currency = lambda currency: browser.element(f'//span[.="{currency}"]')
         self.button_save = browser.element('#save')
         self.successful_change = browser.element('//div[.="Spending is edited successfully"]')
+
+        self.spending_tb = browser.element('#spendings tbody .MuiCheckbox-root')
 
     def check_spending_page_titles(self, text: str):
         """Метод проверки заголовка страницы затрат
@@ -62,7 +64,7 @@ class SpendPage():
         """
         self.category_name(name_category).click()
         self.delete_button.click()
-        self.delete_button_approve.click()
+        self.delete_button_approve.press_enter()
 
     def action_should_have_signal_text(self, text: str) -> None:
         """Метод проверки всплывающего сообщения об успешном действии
@@ -74,6 +76,7 @@ class SpendPage():
         Метод проверки описания на странице
         :param description: искомое описание
         """
+        self.spending_body.perform(command.js.scroll_into_view)
         self.spending_body.should(have.text(description))
 
     def check_delete_spending(self, text: str):
@@ -81,9 +84,11 @@ class SpendPage():
         Метод удаления и последующей проверки затрат
         :param text: текст итогового сообщения
         """
-        self.checkbox_for_all.click()
+        # self.checkbox_for_all.click()
+        self.checkbox_for_all.perform(command.js.scroll_into_view).click()
         self.delete_button.click()
-        self.delete_button_approve.click()
+        # self.delete_button_approve.click()
+        self.delete_button_approve.press_enter()
         self.description_successful_delete_spend.should(have.text(text))
 
     def edit_spending_currency(self, currency: str):
@@ -100,6 +105,18 @@ class SpendPage():
         """Метод проверки всплывающего сообщения об успешном действии
         :param text: текст сигнального сообщения"""
         self.successful_change.should(have.text(text))
+
+
+    def delete_spend_after_action(self):
+        """
+        Метод удаления всех трат после добавления через клиентов
+        """
+        self.checkbox_for_all.perform(command.js.scroll_into_view).click()
+        # self.spending_tb.perform(command.js.scroll_into_view).click()
+        self.delete_button.click()
+        self.delete_button_approve.press_enter()
+        self.spending.should(have.text("There are no spendings"))
+
 
 
 spend_page = SpendPage()

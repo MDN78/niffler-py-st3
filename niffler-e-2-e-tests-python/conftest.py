@@ -1,116 +1,159 @@
 import os
-import time
 
 import pytest
 from dotenv import load_dotenv
-from selene import browser
+from selene import browser, be
 
 from clients.spends_client import SpendsHttpClient
+from clients.category_client import CategoryHttpClient
+from databases.spend_db import SpendDb
+from models.category import CategoryAdd
+from models.config import Envs
+from pages.spend_page import spend_page
 
 
 @pytest.fixture(scope="session", autouse=True)
-def envs():
+def envs() -> Envs:
     """Загрузка файла .env"""
     load_dotenv()
-
-
-@pytest.fixture(scope="session")
-def frontend_url(envs):
-    """Получение url приложения: http://frontend.niffler.dc """
-    return os.getenv("FRONTEND_URL")
-
-
-@pytest.fixture(scope="session")
-def gateway_url(envs):
-    """Получение url приложения"""
-    return os.getenv("GATEWAY_URL")
-
-
-@pytest.fixture(scope="session")
-def profile_url(envs):
-    """Получение url приложения"""
-    return os.getenv("PROFILE_URL")
-
-
-@pytest.fixture(scope="session")
-def registration_url(envs):
-    return os.getenv("REGISTRATION_URL")
+    return Envs(
+        frontend_url=os.getenv("FRONTEND_URL"),
+        gateway_url=os.getenv("GATEWAY_URL"),
+        registration_url=os.getenv("REGISTRATION_URL"),
+        profile_url=os.getenv("PROFILE_URL"),
+        spend_db_url=os.getenv("SPEND_DB_URL"),
+        test_username=os.getenv("TEST_USERNAME"),
+        test_password=os.getenv("TEST_PASSWORD")
+    )
 
 
 @pytest.fixture(scope="session")
 def app_user(envs):
     """Данные пользователя из файла .env"""
-    return os.getenv("TEST_USERNAME"), os.getenv("TEST_PASSWORD")
+    return envs.test_username, envs.test_password
 
 
 @pytest.fixture(scope='session')
-def auth(frontend_url, app_user) -> str:
+def auth(envs) -> str:
     """
-    Фикстура аутентификации пользователя посредством UI интерфейса
-    :param frontend_url: url приложения http://frontend.niffler.dc
-    :param app_user: заранее созданный пользователь
+    Метод аутентификации пользователя посредством UI интерфейса
+    envs.frontend_url: url приложения http://frontend.niffler.dc
+    user: заранее созданный пользователь
     :return: авторизационный id_token
     """
-    username, password = app_user
-    browser.open(frontend_url)
-    browser.element('input[name=username]').set_value(username)
-    browser.element('input[name=password]').set_value(password)
+    browser.open(envs.frontend_url)
+    browser.element('input[name=username]').set_value(envs.test_username)
+    browser.element('input[name=password]').set_value(envs.test_password)
     browser.element('button[type=submit]').click()
-    time.sleep(1)
+    browser.element('[id="spendings"]').should(be.present)
     return browser.driver.execute_script('return window.localStorage.getItem("id_token")')
 
 
 @pytest.fixture(scope='session')
-def spends_client(gateway_url, auth) -> SpendsHttpClient:
-    return SpendsHttpClient(gateway_url, auth)
+def spends_client(envs, auth) -> SpendsHttpClient:
+    """
+    Метод возвращения instance класса SpendsHttpClient
+    :param envs: загрузка данный с env файла
+    :param auth: аутентификация пользователя
+    :return: instance класса SpendsHttpClient
+    """
+    return SpendsHttpClient(envs.gateway_url, auth)
+
+
+@pytest.fixture(scope='session')
+def category_client(envs, auth) -> CategoryHttpClient:
+    """
+    Метод возвращения instance класса CategoryHttpClient
+    :param envs: загрузка данный с env файла
+    :param auth: аутентификация пользователя
+    :return: instance  класса CategoryHttpClient
+    """
+    return CategoryHttpClient(envs.gateway_url, auth)
+
+
+@pytest.fixture(scope="session")
+def spend_db(envs) -> SpendDb:
+    """
+    Метод возвращения instance класса SpendDb
+    :param envs: загрузка данный с env файла
+    :param auth: аутентификация пользователя
+    :return: instance класса SpendDb
+    """
+    return SpendDb(envs.spend_db_url)
 
 
 @pytest.fixture(params=[])
-def category(request, spends_client: SpendsHttpClient) -> str:
+def category(request, category_client: CategoryHttpClient, spend_db: SpendDb):
+    """
+    Метод добавления категории через CategoryHttpClient
+    :param request: получение наименования категории
+    :param category_client: осуществляет запросы на CategoryHttpClient
+    :param spend_db
+    """
     category_name = request.param
-    current_categories = spends_client.get_categories()
-    category_names = [category["name"] for category in current_categories]
-    if category_name not in category_names:
-        spends_client.add_category(category_name)
-    return category_name
+    category = category_client.add_category(CategoryAdd(name=category_name))
+    yield category.name
+    spend_db.delete_category(category.id)
+
+
+@pytest.fixture(params=[])
+def category_db(request, category_client: CategoryHttpClient, spend_db: SpendDb):
+    category = category_client.add_category(request.param)
+    yield category
+    spend_db.delete_category(category.id)
 
 
 @pytest.fixture(params=[])
 def spends(request, spends_client: SpendsHttpClient):
-    spend = spends_client.add_spends(request.param)
-    yield spend
+    """
+    Метод добавления Траты и удаление после теста
+    :param request: получение параметров Траты
+    :param spends_client: осуществление запросов через SpendsHttpClient
+    """
+    t_spend = spends_client.add_spends(request.param)
+    yield t_spend
     all_spends = spends_client.get_spends()
-    if spend["id"] in [spend["id"] for spend in all_spends]:
-        spends_client.remove_spends([spend["id"]])
+    if t_spend.id in [spend.id for spend in all_spends]:
+        spends_client.remove_spends([t_spend.id])
 
 
 @pytest.fixture()
-def delete_spends(auth, spends_client):
-    """Удаление Траты после теста"""
-    yield
-    response = spends_client.get_spends()
-    spends_client.remove_spends(response[0]["id"])
+def delete_spend_fx(request, auth, envs):
+    name_category = request.param
+    yield name_category
+    spend_page.delete_spend(name_category)
 
 
 @pytest.fixture()
-def main_page(auth, frontend_url):
+def main_page(auth, envs):
     """ Фикстура открывает главную страницу с аутентифицированным пользователем"""
-    browser.open(frontend_url)
+    browser.open(envs.frontend_url)
 
 
 @pytest.fixture()
-def main_page_late(category, spends, frontend_url):
-    browser.open(frontend_url)
+def main_page_late(category, spends, envs):
+    browser.open(envs.frontend_url)
 
 
 @pytest.fixture()
-def profile_page(auth, profile_url):
+def profile_page(auth, envs):
     """Открытие страницы профиля аутентифицированного пользователя"""
-    browser.open(profile_url)
+    browser.open(envs.profile_url)
 
 
 @pytest.fixture()
-def login_page(frontend_url):
-    browser.open(frontend_url)
+def login_page(envs):
+    browser.open(envs.frontend_url)
+    yield
+    browser.quit()
+
+
+@pytest.fixture
+def auth_db(envs):
+    """ Метод авторизации для тестов с базой данных """
+    browser.open(envs.frontend_url)
+    browser.element('input[name=username]').set_value(envs.test_username)
+    browser.element('input[name=password]').set_value(envs.test_password)
+    browser.element('button[type=submit]').click()
     yield
     browser.quit()
