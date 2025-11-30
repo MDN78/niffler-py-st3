@@ -1,11 +1,12 @@
 from marks import Pages, TestData
 from pages.profile_page import profiles_page
 from tools.fakers import fake
+import pytest
 
 TEST_CATEGORY = "school"
 
-
-class TestCategories:
+@pytest.mark.skip
+class TestCategoriesOld:
 
     @Pages.profile_page
     def test_create_category(self):
@@ -25,8 +26,8 @@ class TestCategories:
         profiles_page.add_category(same_category)
         profiles_page.check_error_message(f"Error while adding category {same_category}: Cannot save duplicates")
 
-
-class TestProfileInfo:
+@pytest.mark.skip
+class TestProfileInfoOld:
 
     @Pages.profile_page
     def test_profile_title(self):

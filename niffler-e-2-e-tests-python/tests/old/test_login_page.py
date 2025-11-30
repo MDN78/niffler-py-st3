@@ -1,9 +1,11 @@
 from pages.auth_page import auth_page
 from tools.fakers import fake
 from marks import Pages
+import pytest
 
 
-class TestAuthentication:
+@pytest.mark.skip
+class TestAuthenticationOld:
 
     @Pages.login_page
     def test_registration_new_user(self):

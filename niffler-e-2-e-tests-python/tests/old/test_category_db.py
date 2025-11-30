@@ -5,7 +5,7 @@ from tools.helper import check_category_in_db, check_spend_in_db, delete_categor
 
 TEST_CATEGORY = "database"
 
-
+@pytest.mark.skip
 class TestDatabase:
 
     @pytest.mark.usefixtures("auth_db")

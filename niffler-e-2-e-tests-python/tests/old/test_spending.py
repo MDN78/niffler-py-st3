@@ -3,14 +3,15 @@ from models.category import CategoryAdd
 from models.spend import SpendAdd
 from pages.spend_page import spend_page
 from tools.fakers import fake
+import pytest
 
 TEST_CATEGORY = "school"
 TEST_CATEGORY_1 = "car"
 TEST_CATEGORY_2 = "city"
 TEST_CATEGORY_3 = "country"
 
-
-class TestSpendPage:
+@pytest.mark.skip
+class TestSpendPageOld:
 
     @Pages.main_page
     def test_spending_title_statistic_exists(self):
