@@ -2,17 +2,11 @@ import pytest
 
 
 class Pages:
-    main_page = pytest.mark.usefixtures("main_page")
-    main_page_late = pytest.mark.usefixtures("main_page_late")
     profile_page = pytest.mark.usefixtures("profile_page")
-    profile_page_db = pytest.mark.usefixtures("profile_page_db")
-    login_page = pytest.mark.usefixtures("login_page")
-
     open_login_page = pytest.mark.usefixtures("open_login_page")
     open_profile_page = pytest.mark.usefixtures("open_profile_page")
     open_spend_page = pytest.mark.usefixtures("open_spend_page")
 
-    delete_spend = lambda name_category: pytest.mark.parametrize("delete_spend", [name_category], indirect=True)
 
 
 class TestData:

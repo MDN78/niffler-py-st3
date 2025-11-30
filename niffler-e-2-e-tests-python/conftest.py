@@ -4,14 +4,12 @@ import json
 
 import pytest
 from dotenv import load_dotenv
-# from selene import browser, be
 
 from clients.spends_client import SpendsHttpClient
 from clients.category_client import CategoryHttpClient
 from databases.spend_db import SpendDb
 from models.category import CategoryAdd
 from models.config import Envs
-# from pages.spend_page import spend_page
 
 from playwright.sync_api import Page
 from app.pages.auth_page import AuthPage
@@ -201,119 +199,3 @@ def get_token_from_user_state(initialize_browser_state):
         data = json.load(json_file)
         api_token = data['origins'][0]['localStorage'][3]['value']
     return api_token
-
-
-
-# @pytest.fixture(scope='function')
-# def chromium_page(playwright) -> Page:
-#     chromium = playwright.chromium.launch(headless=False)
-#     yield chromium.new_page()
-
-
-# @pytest.fixture
-# def login_page(chromium_page: Page) -> AuthPage:
-#     return AuthPage(page=chromium_page)
-
-
-# @pytest.fixture(scope="function")
-# def login_page(chromium_page: Page) -> AuthPage:
-#     login_page = AuthPage(chromium_page)
-#     return login_page
-
-
-# @pytest.fixture(scope='function')
-# def auth_pw_page(chromium_page: Page) -> AuthPage:
-#     return AuthPage(chromium_page)
-
-
-# @pytest.fixture
-# def open_login_page(auth_pw_page, envs):
-#     auth_pw_page.visit(envs.frontend_url)
-#     auth_pw_page.wait_for_load()
-
-
-# @pytest.fixture(scope="session")
-# def app_user(envs):
-#     """Данные пользователя из файла .env"""
-#     return envs.test_username, envs.test_password
-#
-#
-# @pytest.fixture(scope='session')
-# def auth(envs) -> str:
-#     """
-#     Метод аутентификации пользователя посредством UI интерфейса
-#     envs.frontend_url: url приложения http://frontend.niffler.dc
-#     user: заранее созданный пользователь
-#     :return: авторизационный id_token
-#     """
-#     browser.open(envs.frontend_url)
-#     browser.element('input[name=username]').set_value(envs.test_username)
-#     browser.element('input[name=password]').set_value(envs.test_password)
-#     browser.element('button[type=submit]').click()
-#     browser.element('[id="spendings"]').should(be.present)
-#     return browser.driver.execute_script('return window.localStorage.getItem("id_token")')
-
-
-# @pytest.fixture()
-# def delete_spend_fx(request, auth, envs):
-#     name_category = request.param
-#     yield name_category
-#     spend_page.delete_spend(name_category)
-
-
-#
-# @pytest.fixture()
-# def main_page(auth, envs):
-#     """ Фикстура открывает главную страницу с аутентифицированным пользователем"""
-#     browser.open(envs.frontend_url)
-
-
-# @pytest.fixture()
-# def main_page_late(category, spends, envs):
-#     browser.open(envs.frontend_url)
-#
-#
-# @pytest.fixture()
-# def profile_page(auth, envs):
-#     """Открытие страницы профиля аутентифицированного пользователя"""
-#     browser.open(envs.profile_url)
-#
-#
-# @pytest.fixture()
-# def login_page(envs):
-#     browser.open(envs.frontend_url)
-#     yield
-#     browser.quit()
-
-
-# @pytest.fixture
-# def auth_db(envs):
-#     """ Метод авторизации для тестов с базой данных """
-#     browser.open(envs.frontend_url)
-#     browser.element('input[name=username]').set_value(envs.test_username)
-#     browser.element('input[name=password]').set_value(envs.test_password)
-#     browser.element('button[type=submit]').click()
-#     yield
-#     browser.quit()
-
-
-# @pytest.fixture(scope='session')
-# def category_client(envs, auth) -> CategoryHttpClient:
-#     """
-#     Метод возвращения instance класса CategoryHttpClient
-#     :param envs: загрузка данный с env файла
-#     :param auth: аутентификация пользователя
-#     :return: instance  класса CategoryHttpClient
-#     """
-#     return CategoryHttpClient(envs.gateway_url, auth)
-
-
-# @pytest.fixture(scope='session')
-# def spends_client(envs, auth) -> SpendsHttpClient:
-#     """
-#     Метод возвращения instance класса SpendsHttpClient
-#     :param envs: загрузка данный с env файла
-#     :param auth: аутентификация пользователя
-#     :return: instance класса SpendsHttpClient
-#     """
-#     return SpendsHttpClient(envs.gateway_url, auth)
