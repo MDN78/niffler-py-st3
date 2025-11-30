@@ -37,11 +37,11 @@ class SpendPage(BasePage):
         self.spending = Text(page, locator='[id="spendings"]>div', name='Spendings')
         # self.successful_delete = browser.element('.Toastify__toast-body div:nth-child(2)')
         #
-        # self.edit_spending = browser.element('button[type=button][aria-label="Edit spending"]')
-        # self.currency = browser.element('#currency')
-        # self.select_currency = lambda currency: browser.element(f'//span[.="{currency}"]')
-        # self.button_save = browser.element('#save')
-        # self.successful_change = browser.element('//div[.="Spending is edited successfully"]')
+        self.edit_spending = Button(page, locator='button[type=button][aria-label="Edit spending"]', name='Button edit spending')
+        self.currency = Button(page, locator='#currency', name='Button currency')
+        self.select_currency = lambda currency: page.locator(f'//span[.="{currency}"]')
+        self.button_save = Button(page, locator='#save', name='Button save')
+        self.successful_change = Text(page, locator="//div[@role='alert']//div[contains(text(), 'Spending is edited successfully')]", name='Successful change')
         #
         # self.spending_tb = browser.element('#spendings tbody .MuiCheckbox-root')
 
@@ -91,35 +91,37 @@ class SpendPage(BasePage):
         self.spending_body.should_have_text(description)
         # self.spending_body.perform(command.js.scroll_into_view)
         # self.spending_body.should(have.text(description))
-    #
-    # def check_delete_spending(self, text: str):
-    #     """
-    #     Метод удаления и последующей проверки затрат
-    #     :param text: текст итогового сообщения
-    #     """
-    #     # self.checkbox_for_all.click()
-    #     self.checkbox_for_all.perform(command.js.scroll_into_view).click()
-    #     self.delete_button.click()
-    #     # self.delete_button_approve.click()
-    #     self.delete_button_approve.press_enter()
-    #     self.description_successful_delete_spend.should(have.text(text))
-    #
-    # def edit_spending_currency(self, currency: str):
-    #     """
-    #     Метод изменения валюты расходов
-    #     :param currency: желаемая валюта в формате "USD"
-    #     """
-    #     self.edit_spending.click()
-    #     self.currency.click()
-    #     self.select_currency(currency).click()
-    #     self.button_save.click()
-    #
-    # def should_be_signal_text(self, text: str) -> None:
-    #     """Метод проверки всплывающего сообщения об успешном действии
-    #     :param text: текст сигнального сообщения"""
-    #     self.successful_change.should(have.text(text))
-    #
-    #
+
+    def check_delete_spending(self, text: str):
+        """
+        Метод удаления и последующей проверки затрат
+        :param text: текст итогового сообщения
+        """
+        self.checkbox_for_all.click()
+        # self.checkbox_for_all.perform(command.js.scroll_into_view).click()
+        self.delete_button.click()
+        self.delete_button_approve.click()
+        self.description_successful_delete_spend.should_have_text(text)
+
+        # self.delete_button_approve.press_enter()
+        # self.description_successful_delete_spend.should(have.text(text))
+
+    def edit_spending_currency(self, currency: str):
+        """
+        Метод изменения валюты расходов
+        :param currency: желаемая валюта в формате "USD"
+        """
+        self.edit_spending.click()
+        self.currency.click()
+        self.select_currency(currency).click()
+        self.button_save.click()
+
+    def should_be_signal_text(self, text: str) -> None:
+        """Метод проверки всплывающего сообщения об успешном действии
+        :param text: текст сигнального сообщения"""
+        self.successful_change.should_have_text(text)
+
+
     def delete_spend_after_action(self):
         """
         Метод удаления всех трат после добавления через клиентов
