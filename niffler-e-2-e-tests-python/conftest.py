@@ -168,6 +168,7 @@ def spends_page_late(chromium_page_with_state: Page, category, spends) -> SpendP
 def open_spend_page(spends_page, envs):
     spends_page.visit(envs.frontend_url)
     spends_page.wait_for_load()
+    spends_page.reload()
 
 
 @pytest.fixture(scope="function")

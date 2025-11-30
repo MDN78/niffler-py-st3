@@ -45,7 +45,7 @@ class TestSpendPage:
     @TestData.category(TEST_CATEGORY)
     @TestData.spends(SpendAdd(category=CategoryAdd(name=TEST_CATEGORY)))
     def test_delete_spending(self, category, spends, spends_page_late):
-        spends_page_late.reload()
+        # spends_page_late.reload()
         spends_page_late.delete_spend(TEST_CATEGORY)
         spends_page_late.action_should_have_signal_text("Spendings succesfully deleted")
 
@@ -54,7 +54,7 @@ class TestSpendPage:
     @TestData.category(TEST_CATEGORY_1)
     @TestData.spends(SpendAdd(description="QA.GURU Python Advanced 2", category=CategoryAdd(name=TEST_CATEGORY_1)))
     def test_delete_spending_after_action(self, category, spends, spends_page_late):
-        spends_page_late.reload()
+        # spends_page_late.reload()
         spends_page_late.spending_page_should_have_text("QA.GURU Python Advanced 2")
         spends_page_late.delete_spend_after_action()
 
@@ -62,7 +62,7 @@ class TestSpendPage:
     @TestData.category(TEST_CATEGORY_2)
     @TestData.spends(SpendAdd(category=CategoryAdd(name=TEST_CATEGORY_2)))
     def test_delete_all_spending(self, category, spends, spends_page_late):
-        spends_page_late.reload()
+        # spends_page_late.reload()
         spends_page_late.check_delete_spending("Spendings succesfully deleted")
 
 
@@ -70,6 +70,6 @@ class TestSpendPage:
     @TestData.category(TEST_CATEGORY_3)
     @TestData.spends(SpendAdd(category=CategoryAdd(name=TEST_CATEGORY_3)))
     def test_edit_spending_currency_usd(self, category, spends, spends_page_late):
-        spends_page_late.reload()
+        # spends_page_late.reload()
         spends_page_late.edit_spending_currency("USD")
         spends_page_late.should_be_signal_text("Spending is edited successfully")
