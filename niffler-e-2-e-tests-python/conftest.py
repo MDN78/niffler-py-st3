@@ -1,5 +1,5 @@
 import os
-from pathlib import Path
+
 import json
 
 import pytest
@@ -34,27 +34,25 @@ def envs() -> Envs:
 
 
 @pytest.fixture(scope='session')
-def spends_client(envs, get_token_from_user_state, playwright) -> SpendsHttpClient:
+def spends_client(envs, get_token_from_user_state) -> SpendsHttpClient:
     """
     Метод возвращения instance класса SpendsHttpClient
     :param envs: загрузка данный с env файла
     :param get_token_from_user_state: аутентификация пользователя
-    :param playwright
     :return: instance класса SpendsHttpClient
     """
-    return SpendsHttpClient(envs.gateway_url, get_token_from_user_state, playwright)
+    return SpendsHttpClient(envs.gateway_url, get_token_from_user_state)
 
 
 @pytest.fixture(scope='session')
-def category_client(envs, get_token_from_user_state, playwright) -> CategoryHttpClient:
+def category_client(envs, get_token_from_user_state) -> CategoryHttpClient:
     """
     Метод возвращения instance класса CategoryHttpClient
     :param envs: загрузка данный с env файла
     :param get_token_from_user_state: аутентификация пользователя
-    :param playwright
     :return: instance  класса CategoryHttpClient
     """
-    return CategoryHttpClient(envs.gateway_url, get_token_from_user_state, playwright)
+    return CategoryHttpClient(envs.gateway_url, get_token_from_user_state)
 
 
 @pytest.fixture(scope="session")
@@ -104,39 +102,25 @@ def spends(request, spends_client: SpendsHttpClient):
 
 
 @pytest.fixture(scope="session")
-def initialize_browser_state(browser: Browser, envs, request):
-    """Автоматически создает файл с состоянием авторизации перед всеми тестами"""
+def auth_storage(tmp_path_factory):
+    return tmp_path_factory.mktemp("session") / "niffler_user.json"
 
-    # Получаем корневую директорию проекта
-    project_root = Path(request.config.rootdir)
 
-    # Создаем папку auth_data в корне проекта
-    auth_dir = project_root / "auth_data"
-    auth_dir.mkdir(exist_ok=True)
-
-    state_path = auth_dir / "niffler_user.json"
-
+@pytest.fixture(scope="session")
+def initialize_browser_state(browser: Browser, envs, auth_storage):
     context = browser.new_context()
     page = context.new_page()
 
-    try:
-        registration_page = AuthPage(page=page)
-        registration_page.visit(envs.frontend_url)
-        registration_page.login(username=envs.test_username, password=envs.test_password)
-        registration_page.spending_title_exists("History of Spendings")
+    registration_page = AuthPage(page=page)
+    registration_page.visit(envs.frontend_url)
+    registration_page.login(username=envs.test_username, password=envs.test_password)
+    registration_page.spending_title_exists("History of Spendings")
 
-        # Сохраняем состояние аутентификации
-        context.storage_state(path=state_path)
+    context.storage_state(path=auth_storage)
+    print(f"Auth state saved to: {auth_storage}")
+    context.close()
 
-        print(f"Auth state saved to: {state_path}")
-
-    except Exception as e:
-        print(f"Error during authentication: {e}")
-        raise
-    finally:
-        context.close()
-
-    return state_path
+    return auth_storage
 
 
 @pytest.fixture(scope="function")
@@ -152,14 +136,12 @@ def chromium_page_with_state(browser: Browser, initialize_browser_state):
 
 @pytest.fixture(scope="function")
 def spends_page(chromium_page_with_state: Page) -> SpendPage:
-    spend_page = SpendPage(chromium_page_with_state)
-    return spend_page
+    return SpendPage(chromium_page_with_state)
 
 
 @pytest.fixture(scope="function")
 def spends_page_late(chromium_page_with_state: Page, category, spends) -> SpendPage:
-    spend_page = SpendPage(chromium_page_with_state)
-    return spend_page
+    return SpendPage(chromium_page_with_state)
 
 
 @pytest.fixture()
@@ -171,8 +153,7 @@ def open_spend_page(spends_page, envs):
 
 @pytest.fixture(scope="function")
 def profile_page(chromium_page_with_state: Page) -> ProfilePage:
-    profile_page = ProfilePage(chromium_page_with_state)
-    return profile_page
+    return ProfilePage(chromium_page_with_state)
 
 
 @pytest.fixture()
@@ -183,8 +164,7 @@ def open_profile_page(profile_page, envs):
 
 @pytest.fixture(scope="function")
 def login_page(page: Page) -> AuthPage:
-    login_page = AuthPage(page)
-    return login_page
+    return AuthPage(page)
 
 
 @pytest.fixture
