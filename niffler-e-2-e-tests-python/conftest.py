@@ -1,7 +1,5 @@
 import os
 import allure
-from allure_commons.reporter import AllureReporter
-from allure_pytest.listener import AllureListener
 import json
 
 import pytest
@@ -20,13 +18,8 @@ from app.pages.auth_page import AuthPage
 from playwright.sync_api import Browser
 from app.pages.profile_page import ProfilePage
 from app.pages.spend_page import SpendPage
-from tools.helper import allure_reporter
+from tools.allure.reportet import allure_reporter, allure_logger
 from tools.allure.environment import create_allure_environment_file
-
-
-def allure_logger(config) -> AllureReporter:
-    listener: AllureListener = config.pluginmanager.get_plugin("allure_listener")
-    return listener.allure_logger
 
 
 @pytest.hookimpl(hookwrapper=True, trylast=True)
@@ -49,7 +42,10 @@ def pytest_runtest_teardown(item):
     yield
     reporter = allure_reporter(item.config)
     test = reporter.get_test(None)
-    test.labels = list(filter(lambda x: x.name not in ("tag"), test.labels))
+    test.labels = list(
+        filter(lambda x: not (x.name == "tag" and "@pytest.mark.usefixtures" in x.value),
+               test.labels)
+    )
 
 
 @pytest.fixture(scope='session', autouse=True)

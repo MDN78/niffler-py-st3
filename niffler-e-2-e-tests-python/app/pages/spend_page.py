@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 from app.pages.base_page import BasePage
 from app.components.input import Input
 from app.components.button import Button
@@ -29,21 +29,24 @@ class SpendPage(BasePage):
                                             locator="//div[@role='dialog']//button[contains(text(), 'Delete')]",
                                             name='Confirm delete spend')
 
-        self.description_successful_delete_spend = Text(page, locator="//div[@role='presentation']//div[contains(text(), 'Spendings succesfully deleted')]",
+        self.description_successful_delete_spend = Text(page,
+                                                        locator="//div[@role='presentation']//div[contains(text(), 'Spendings succesfully deleted')]",
                                                         name='Description successful delete spend')
-        self.spending_body = Text(page, locator='#spendings tbody >> text=QA.GURU Python Advanced 2', name='Spending body')
+        self.spending_body = Text(page, locator='#spendings tbody >> text=QA.GURU Python Advanced 2',
+                                  name='Spending body')
         #
         self.checkbox_for_all = Button(page, locator='thead input[type="checkbox"]', name='Checkbox for all')
         self.spending = Text(page, locator='[id="spendings"]>div', name='Spendings')
         # self.successful_delete = browser.element('.Toastify__toast-body div:nth-child(2)')
         #
-        self.edit_spending = Button(page, locator='button[type=button][aria-label="Edit spending"]', name='Button edit spending')
+        self.edit_spending = Button(page, locator='button[type=button][aria-label="Edit spending"]',
+                                    name='Button edit spending')
         self.currency = Button(page, locator='#currency', name='Button currency')
         self.select_currency = lambda currency: page.locator(f'//span[.="{currency}"]')
         self.button_save = Button(page, locator='#save', name='Button save')
-        self.successful_change = Text(page, locator="//div[@role='alert']//div[contains(text(), 'Spending is edited successfully')]", name='Successful change')
-        #
-        # self.spending_tb = browser.element('#spendings tbody .MuiCheckbox-root')
+        self.successful_change = Text(page,
+                                      locator="//div[@role='alert']//div[contains(text(), 'Spending is edited successfully')]",
+                                      name='Successful change')
 
     def check_spending_page_titles(self, text: str):
         """Метод проверки заголовка страницы затрат
@@ -82,15 +85,12 @@ class SpendPage(BasePage):
         :param text: текст сигнального сообщения"""
         self.description_successful_delete_spend.should_have_text(text)
 
-
     def spending_page_should_have_text(self, description: str):
         """
         Метод проверки описания на странице
         :param description: искомое описание
         """
         self.spending_body.should_have_text(description)
-        # self.spending_body.perform(command.js.scroll_into_view)
-        # self.spending_body.should(have.text(description))
 
     def check_delete_spending(self, text: str):
         """
@@ -98,13 +98,9 @@ class SpendPage(BasePage):
         :param text: текст итогового сообщения
         """
         self.checkbox_for_all.click()
-        # self.checkbox_for_all.perform(command.js.scroll_into_view).click()
         self.delete_button.click()
         self.delete_button_approve.click()
         self.description_successful_delete_spend.should_have_text(text)
-
-        # self.delete_button_approve.press_enter()
-        # self.description_successful_delete_spend.should(have.text(text))
 
     def edit_spending_currency(self, currency: str):
         """
@@ -121,14 +117,11 @@ class SpendPage(BasePage):
         :param text: текст сигнального сообщения"""
         self.successful_change.should_have_text(text)
 
-
     def delete_spend_after_action(self):
         """
         Метод удаления всех трат после добавления через клиентов
         """
         self.checkbox_for_all.click()
-        # self.checkbox_for_all.perform(command.js.scroll_into_view).click()
-        # self.spending_tb.perform(command.js.scroll_into_view).click()
         self.delete_button.click()
         self.delete_button_approve.click()
         self.description_successful_delete_spend.should_have_text("Spendings succesfully deleted")

@@ -1,10 +1,8 @@
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import DirectoryPath
 from typing import Self
 import platform
 import sys
-
 
 
 class Settings(BaseSettings):
@@ -19,19 +17,20 @@ class Settings(BaseSettings):
 
         return Settings(allure_results_dir=allure_results_dir)
 
+
 settings = Settings.initialize()
 
 
 def create_allure_environment_file():
-    # Создаем список из элементов в формате {key}={value}
+    # Create list from elements in format: {key}={value}
     items = [f'{key}={value}' for key, value in settings.model_dump().items()]
     # add information about sistem
     items.append(f'os_info={platform.system()} | {platform.release()} | {platform.version()}')
     items.append(f'python_version={sys.version}')
 
-    # Собираем все элементы в единую строку с переносами
+    # Collect all elements to row
     properties = '\n'.join(items)
 
-    # Открываем файл ./allure-results/environment.properties на чтение
+    # ОOpen file ./allure-results/environment.properties attribute read
     with open(settings.allure_results_dir.joinpath('environment.properties'), 'w+') as file:
-        file.write(properties)  # Записываем переменные в файл
+        file.write(properties)

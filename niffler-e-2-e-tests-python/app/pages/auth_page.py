@@ -19,9 +19,6 @@ class AuthPage(BasePage):
         self.submit_button = Button(page, locator='button[type=submit]', name='submit')
         self.spending_title = Text(page, locator='[id="spendings"]>h2', name='spending title')
         self.login_warning = Text(page, locator="[class='form__error-container'] p", name='login warning')
-
-        # self.login_warning = page.locator("[class='form__error-container'] p")
-
         self.unsuccessful_registration = Text(page, locator='.form__error', name='unsuccessful registration')
         self.register_form = Button(page, locator='[class="form__register"]', name='register button')
         self.submit_password_field = Input(page, locator='input[name=passwordSubmit]', name='submit password')

@@ -1,7 +1,3 @@
-from allure_commons.reporter import AllureReporter
-from allure_pytest.listener import AllureListener
-
-
 def check_category_in_db(response, username: str, test_category: str):
     first_category = response[0]
     assert first_category.username == username
@@ -22,13 +18,3 @@ def delete_category_in_db(response, spend_db):
         category_id = spend_sql_obj.category_id
         spend_db.delete_category(category_id)
 
-
-def allure_reporter(config) -> AllureReporter:
-    listener: AllureListener = next(
-        filter(
-            lambda plugin: (isinstance(plugin, AllureListener)),
-            dict(config.pluginmanager.list_name_plugin()).values(),
-        ),
-        None,
-    )
-    return listener.allure_logger
