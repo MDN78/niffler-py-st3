@@ -9,7 +9,6 @@ readme = "README.md"
 requires-python = ">=3.13,<4.0"
 dependencies = [
     "pytest (>=9.0.1,<10.0.0)",
-    "selene (==2.0.0rc9)",
     "python-dotenv (>=1.2.1,<2.0.0)",
     "faker (>=38.0.0,<39.0.0)",
     "pytest-xdist (>=3.8.0,<4.0.0)",
@@ -22,7 +21,8 @@ dependencies = [
     "playwright (>=1.56.0,<2.0.0)",
     "pydantic-settings (>=2.12.0,<3.0.0)",
     "pytest-playwright (>=0.7.2,<0.8.0)",
-    "allure-pytest (>=2.15.2,<3.0.0)"
+    "allure-pytest (>=2.15.2,<3.0.0)",
+    "requests-toolbelt (>=1.0.0,<2.0.0)"
 ]
 
 [tool.pytest.ini_options]

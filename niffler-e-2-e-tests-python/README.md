@@ -12,6 +12,11 @@ bash docker-compose-dev.sh
 pytest --numprocesses=2
 ```
 
+### Просмотре отчетов в `Playwright Trace Viewer:`:
+- перейти на сайт `https://trace.playwright.dev/`
+- скачать отчет по нужному тесту из папки проекта `/tracing`
+- загрузить отчет на указанный сайт
+
 
 
 #### Notes

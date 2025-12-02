@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
-
+import allure
 from playwright.sync_api import Locator, Page, expect
+from tools.logger import get_logger
+
+logger = get_logger("BASE_COMPONENT")
 
 
 class Component(ABC):
@@ -16,16 +19,28 @@ class Component(ABC):
 
     def get_locator(self, **kwargs) -> Locator:
         locator = self.locator.format(**kwargs)
-        return self.page.locator(locator)
+        step = f'Getting locator name: "{locator}"'
+        with allure.step(step):
+            logger.info(step)
+            return self.page.locator(locator)
 
     def click(self, **kwargs) -> None:
-        locator = self.get_locator(**kwargs)
-        locator.click()
+        step = f'Clicking {self.type_of} with name "{self.name}"'
+        with allure.step(step):
+            logger.info(step)
+            locator = self.get_locator(**kwargs)
+            locator.click()
 
     def should_be_visible(self, **kwargs) -> None:
-        locator = self.get_locator(**kwargs)
-        expect(locator).to_be_visible()
+        step = f'Checking that {self.type_of} "{self.name}" is visible'
+        with allure.step(step):
+            locator = self.get_locator(**kwargs)
+            logger.info(step)
+            expect(locator).to_be_visible()
 
     def should_have_text(self, text: str, **kwargs) -> None:
-        locator = self.get_locator(**kwargs)
-        expect(locator).to_have_text(text)
+        step = f'Checking that {self.type_of} "{self.name}" has text "{text}"'
+        with allure.step(step):
+            locator = self.get_locator(**kwargs)
+            logger.info(step)
+            expect(locator).to_have_text(text)

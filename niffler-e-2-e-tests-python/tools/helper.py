@@ -1,3 +1,5 @@
+from allure_commons.reporter import AllureReporter
+from allure_pytest.listener import AllureListener
 
 
 def check_category_in_db(response, username: str, test_category: str):
@@ -14,9 +16,19 @@ def check_spend_in_db(response, amount: float, category_name: str, description: 
         assert category_name == category.name
 
 
-
 def delete_category_in_db(response, spend_db):
     for item in response:
         spend_sql_obj = item[0]
         category_id = spend_sql_obj.category_id
         spend_db.delete_category(category_id)
+
+
+def allure_reporter(config) -> AllureReporter:
+    listener: AllureListener = next(
+        filter(
+            lambda plugin: (isinstance(plugin, AllureListener)),
+            dict(config.pluginmanager.list_name_plugin()).values(),
+        ),
+        None,
+    )
+    return listener.allure_logger
