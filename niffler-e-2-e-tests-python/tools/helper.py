@@ -1,3 +1,6 @@
+from playwright.sync_api import Page
+
+
 def check_category_in_db(response, username: str, test_category: str):
     first_category = response[0]
     assert first_category.username == username
@@ -18,3 +21,9 @@ def delete_category_in_db(response, spend_db):
         category_id = spend_sql_obj.category_id
         spend_db.delete_category(category_id)
 
+
+def mock_static_resources(page: Page):
+    """
+    Метод отключения подгрузки статических файлов
+    """
+    page.route("**/*.{ico,png,jpg,webp,mp3,mp4,woff,woff2}", lambda route: route.abort())

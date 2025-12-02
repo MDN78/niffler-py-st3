@@ -20,6 +20,7 @@ from app.pages.profile_page import ProfilePage
 from app.pages.spend_page import SpendPage
 from tools.allure.reportet import allure_reporter, allure_logger
 from tools.allure.environment import create_allure_environment_file
+from tools.helper import mock_static_resources
 
 
 @pytest.hookimpl(hookwrapper=True, trylast=True)
@@ -166,6 +167,7 @@ def chromium_page_with_state(browser: Browser, initialize_browser_state, request
     context = browser.new_context(storage_state=initialize_browser_state)
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
+    mock_static_resources(page)
 
     yield page
 
