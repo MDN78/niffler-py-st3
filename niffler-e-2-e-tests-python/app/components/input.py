@@ -23,11 +23,14 @@ class Input(Component):
 
     def clear(self, validate_empty=False, **kwargs):
         """Очищает поле ввода"""
-        locator = self.get_locator(**kwargs)
-        locator.clear()
+        step = f'Prepare {self.type_of} "{self.name}" for adding new name"'
+        with allure.step(step):
+            locator = self.get_locator(**kwargs)
+            logger.info(step)
+            locator.clear()
 
-        if validate_empty:
-            self.should_be_empty(**kwargs)
+            if validate_empty:
+                self.should_be_empty(**kwargs)
 
     def should_be_empty(self, **kwargs):
         """Проверяет, что поле пустое"""

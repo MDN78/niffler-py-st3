@@ -4,6 +4,7 @@ from app.components.input import Input
 from app.components.button import Button
 from app.components.title import Title
 from app.components.text import Text
+import allure
 
 
 class AuthPage(BasePage):
@@ -25,6 +26,7 @@ class AuthPage(BasePage):
         self.successful_registration = Text(page, locator='.form__paragraph', name='successful registration')
         self.register_form_title = Title(page, locator='[id="register-form"]>h1', name='register form title')
 
+    @allure.step('UI: login user')
     def login(self, username: str, password: str) -> None:
         """
         Метод аутентификации существующего пользователя
@@ -36,12 +38,14 @@ class AuthPage(BasePage):
         self.password.fill(password)
         self.submit_button.click()
 
+    @allure.step('UI: open registration page')
     def open_registration_page(self) -> None:
         """
         Метод перехода на страницу регистрации
         """
         self.register_form.click()
 
+    @allure.step('UI: check register form title text')
     def register_form_should_have_title(self, title: str) -> None:
         """
         Метод проверки регистрационной формы на предмет наличия заголовка
@@ -49,6 +53,7 @@ class AuthPage(BasePage):
         """
         self.register_form_title.should_have_text(title)
 
+    @allure.step('UI: registration new user')
     def registration_user(self, username: str, password: str) -> None:
         """
         Метод регистрации нового пользователя
@@ -61,6 +66,7 @@ class AuthPage(BasePage):
         self.submit_password_field.fill(password)
         self.submit_button.click()
 
+    @allure.step('UI: check spending page title text')
     def spending_title_exists(self, title: str) -> None:
         """
         Метод проверки заголовка страницы Затрат
@@ -68,6 +74,7 @@ class AuthPage(BasePage):
         """
         self.spending_title.should_have_text(title)
 
+    @allure.step('UI: unsuccessful registration new user')
     def text_unsuccessful_login(self, text: str) -> None:
         """
         Метод проверки предупредительного оповещения о неудачной аутентификации
@@ -76,7 +83,7 @@ class AuthPage(BasePage):
         text_from_ui = self.login_warning.get_locator().text_content()
         assert text in text_from_ui or "Bad credentials" in text_from_ui
 
-
+    @allure.step('UI: check text unsuccessful registration new user')
     def text_unsuccessful_registration(self, text: str) -> None:
         """
         Метод проверки текста после неуспешной регистрации пользователя
@@ -84,6 +91,7 @@ class AuthPage(BasePage):
         """
         self.unsuccessful_registration.should_have_text(text)
 
+    @allure.step('UI: check text successful registration new user')
     def text_should_be_visible(self, text: str) -> None:
         """
         Метод проверки текста после успешной регистрации пользователя

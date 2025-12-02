@@ -4,7 +4,7 @@ from models.spend import SpendAdd
 from tools.fakers import fake
 import pytest
 import allure
-from tools.allure.annotations import AllureFeature, AllureStory
+from tools.allure.annotations import AllureFeature, AllureStory, AllureTags
 
 pytestmark = [pytest.mark.allure_label("Spends", label_type="epic")]
 
@@ -15,15 +15,16 @@ TEST_CATEGORY_3 = "country"
 
 
 # @pytest.mark.skip
-@allure.tag(AllureFeature.SPENDS)
+@allure.tag(AllureTags.ACTIONS_UI)
+@allure.feature(AllureFeature.SPENDS)
 class TestSpendPage:
 
-    @allure.tag(AllureStory.SPEND)
+    @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
     def test_spending_title_statistic_exists(self, spends_page):
         spends_page.check_spending_page_titles('Statistics')
 
-    @allure.tag(AllureStory.SPEND)
+    @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
     def test_create_new_spending(self, spends_page):
         amount = fake.integer()
@@ -34,7 +35,7 @@ class TestSpendPage:
         spends_page.check_spending_exists(category)
         spends_page.delete_spend(category)
 
-    @allure.tag(AllureStory.SPEND)
+    @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
     def test_delete_spending_via_ui(self, spends_page):
         amount = fake.integer()
@@ -45,7 +46,7 @@ class TestSpendPage:
         spends_page.delete_spend(category)
         spends_page.action_should_have_signal_text("Spendings succesfully deleted")
 
-    @allure.tag(AllureStory.SPEND)
+    @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
     @TestData.category(TEST_CATEGORY)
     @TestData.spends(SpendAdd(category=CategoryAdd(name=TEST_CATEGORY)))
@@ -53,7 +54,7 @@ class TestSpendPage:
         spends_page_late.delete_spend(TEST_CATEGORY)
         spends_page_late.action_should_have_signal_text("Spendings succesfully deleted")
 
-    @allure.tag(AllureStory.SPEND)
+    @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
     @TestData.category(TEST_CATEGORY_1)
     @TestData.spends(SpendAdd(description="QA.GURU Python Advanced 2", category=CategoryAdd(name=TEST_CATEGORY_1)))
@@ -61,14 +62,14 @@ class TestSpendPage:
         spends_page_late.spending_page_should_have_text("QA.GURU Python Advanced 2")
         spends_page_late.delete_spend_after_action()
 
-    @allure.tag(AllureStory.SPEND)
+    @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
     @TestData.category(TEST_CATEGORY_2)
     @TestData.spends(SpendAdd(category=CategoryAdd(name=TEST_CATEGORY_2)))
     def test_delete_all_spending(self, category, spends, spends_page_late):
         spends_page_late.check_delete_spending("Spendings succesfully deleted")
 
-    @allure.tag(AllureStory.SPEND)
+    @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
     @TestData.category(TEST_CATEGORY_3)
     @TestData.spends(SpendAdd(category=CategoryAdd(name=TEST_CATEGORY_3)))

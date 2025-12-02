@@ -4,6 +4,7 @@ from app.components.input import Input
 from app.components.button import Button
 from app.components.title import Title
 from app.components.text import Text
+import allure
 
 
 class SpendPage(BasePage):
@@ -34,11 +35,8 @@ class SpendPage(BasePage):
                                                         name='Description successful delete spend')
         self.spending_body = Text(page, locator='#spendings tbody >> text=QA.GURU Python Advanced 2',
                                   name='Spending body')
-        #
         self.checkbox_for_all = Button(page, locator='thead input[type="checkbox"]', name='Checkbox for all')
         self.spending = Text(page, locator='[id="spendings"]>div', name='Spendings')
-        # self.successful_delete = browser.element('.Toastify__toast-body div:nth-child(2)')
-        #
         self.edit_spending = Button(page, locator='button[type=button][aria-label="Edit spending"]',
                                     name='Button edit spending')
         self.currency = Button(page, locator='#currency', name='Button currency')
@@ -47,12 +45,15 @@ class SpendPage(BasePage):
         self.successful_change = Text(page,
                                       locator="//div[@role='alert']//div[contains(text(), 'Spending is edited successfully')]",
                                       name='Successful change')
+        self.spend_text = Text(page, locator='.table.spendings-table td', name='Spending text')
 
+    @allure.step('UI: check spending title')
     def check_spending_page_titles(self, text: str):
         """Метод проверки заголовка страницы затрат
         :param text: текст заголовка"""
         self.statistic_title.should_have_text(text)
 
+    @allure.step('UI: Create spend')
     def create_spend(self, amount: int, test_category: str, description: str) -> None:
         """Метод создания траты
         :param amount: сумма затраты
@@ -66,12 +67,16 @@ class SpendPage(BasePage):
         self.description.fill(f'{description}')
         self.button_add_spending.click()
 
+    @allure.step('UI: check spend titles')
     def check_spending_exists(self, category: str):
         """Метод проверки создания затраты
         :param category: наименование категории
         """
-        filtered_cells = self.page.locator('.table.spendings-table td').filter(has_text=category).all()
+        signal_text = self.spend_text.get_locator()
+        signal_text.filter(has_text=category).all()
+        # self.page.locator('.table.spendings-table td').filter(has_text=category).all()
 
+    @allure.step('UI: delete spend')
     def delete_spend(self, name_category: str) -> None:
         """Метод удаления затраты по наименованию категории
         :param name_category: наименование категории
@@ -80,11 +85,13 @@ class SpendPage(BasePage):
         self.delete_button.click()
         self.delete_button_approve.click()
 
+    @allure.step('UI: check signal text')
     def action_should_have_signal_text(self, text: str) -> None:
         """Метод проверки всплывающего сообщения об успешном действии
         :param text: текст сигнального сообщения"""
         self.description_successful_delete_spend.should_have_text(text)
 
+    @allure.step('UI: check text')
     def spending_page_should_have_text(self, description: str):
         """
         Метод проверки описания на странице
@@ -92,6 +99,7 @@ class SpendPage(BasePage):
         """
         self.spending_body.should_have_text(description)
 
+    @allure.step('UI: check deleting spend')
     def check_delete_spending(self, text: str):
         """
         Метод удаления и последующей проверки затрат
@@ -102,6 +110,7 @@ class SpendPage(BasePage):
         self.delete_button_approve.click()
         self.description_successful_delete_spend.should_have_text(text)
 
+    @allure.step('UI: edit currency')
     def edit_spending_currency(self, currency: str):
         """
         Метод изменения валюты расходов
@@ -112,11 +121,13 @@ class SpendPage(BasePage):
         self.select_currency(currency).click()
         self.button_save.click()
 
+    @allure.step('UI: check text')
     def should_be_signal_text(self, text: str) -> None:
         """Метод проверки всплывающего сообщения об успешном действии
         :param text: текст сигнального сообщения"""
         self.successful_change.should_have_text(text)
 
+    @allure.step('UI: delete spend after action')
     def delete_spend_after_action(self):
         """
         Метод удаления всех трат после добавления через клиентов

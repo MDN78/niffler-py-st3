@@ -1,6 +1,12 @@
 from enum import Enum
 
 
+class AllureTags(str, Enum):
+    USER_LOGIN = "USER_LOGIN"
+    ACTIONS_UI = "ACTIONS_UI"
+    ACTIONS_DB = "ACTIONS_DB"
+
+
 class AllureFeature(str, Enum):
     DATABASE = "Database"
     AUTHENTICATION = "Authentication"
