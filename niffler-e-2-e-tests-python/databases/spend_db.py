@@ -4,13 +4,14 @@ import allure
 from allure_commons.types import AttachmentType
 
 from sqlalchemy import create_engine, Engine, event
-from sqlmodel import Session, select
+from sqlmodel import Session, select, delete
 
 from models.category import Category
 from models.spend import SpendSQL
 
 
 class SpendDb:
+    """Класс для работы с тратами в базе данных"""
     engine: Engine
 
     def __init__(self, db_url: str):
@@ -56,3 +57,10 @@ class SpendDb:
                 SpendSQL.username == username)
             result = session.exec(statement).all()
             return result
+
+    @allure.step("DB удалить все траты пользователя")
+    def delete_spends_by_user(self, username: str):
+        with Session(self.engine) as session:
+            statement = delete(SpendSQL).where(SpendSQL.username == username)
+            session.exec(statement)
+            session.commit()

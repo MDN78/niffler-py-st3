@@ -6,6 +6,9 @@ from requests_toolbelt.utils.dump import dump_response
 from allure_commons.types import AttachmentType
 
 from models.spend import SpendAdd, Spend
+from tools.logger import get_logger
+
+logger = get_logger("SPENDS CLIENT")
 
 
 class SpendsHttpClient:
@@ -20,11 +23,13 @@ class SpendsHttpClient:
             "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
         })
+        self.session.hooks["response"].append(self.attach_response)
 
     @staticmethod
     @allure.step('HTTP: attach response')
     def attach_response(response: Response, *args, **kwargs):
         attachment_name = response.request.method + " " + response.request.url
+        logger.info(f"API: method and url: {attachment_name}")
         allure.attach(dump_response(response), attachment_name, attachment_type=AttachmentType.TEXT)
 
     @allure.step('HTTP: add spends')

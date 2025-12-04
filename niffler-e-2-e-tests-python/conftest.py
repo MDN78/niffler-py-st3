@@ -120,6 +120,7 @@ def category(request: FixtureRequest, category_client: CategoryHttpClient, spend
 
 @pytest.fixture(params=[])
 def category_db(request, category_client: CategoryHttpClient, spend_db: SpendDb):
+    """Фмкстура создания категории в базе данных и удаление после теста"""
     category = category_client.add_category(request.param)
     yield category
     spend_db.delete_category(category.id)
@@ -146,6 +147,7 @@ def auth_storage(tmp_path_factory):
 
 @pytest.fixture(scope="session")
 def initialize_browser_state(browser: Browser, envs: Envs, auth_storage):
+    """Метод получение аутентификационного токена"""
     context = browser.new_context()
     page = context.new_page()
 
@@ -178,11 +180,13 @@ def chromium_page_with_state(browser: Browser, initialize_browser_state, request
 
 @pytest.fixture
 def spends_page(chromium_page_with_state: Page) -> SpendPage:
+    """Метод возвращения instance класса SpendPage"""
     return SpendPage(chromium_page_with_state)
 
 
 @pytest.fixture
 def spends_page_late(chromium_page_with_state: Page, category, spends) -> SpendPage:
+    """Метод возвращения instance класса SpendPage with category and spends"""
     return SpendPage(chromium_page_with_state)
 
 
@@ -195,6 +199,7 @@ def open_spend_page(spends_page: SpendPage, envs: Envs):
 
 @pytest.fixture
 def profile_page(chromium_page_with_state: Page) -> ProfilePage:
+    """Метод возвращения instance класса ProfilePage"""
     return ProfilePage(chromium_page_with_state)
 
 
@@ -206,6 +211,7 @@ def open_profile_page(profile_page: ProfilePage, envs):
 
 @pytest.fixture
 def login_page(page: Page) -> AuthPage:
+    """Метод возвращения instance класса AuthPage"""
     return AuthPage(page)
 
 
@@ -217,6 +223,7 @@ def open_login_page(login_page: AuthPage, envs):
 
 @pytest.fixture(scope="session")
 def get_token_from_user_state(initialize_browser_state):
+    """Метод получения аутентификационного токена с файла из временного хранилища"""
     with open(initialize_browser_state) as json_file:
         data = json.load(json_file)
         api_token = data['origins'][0]['localStorage'][3]['value']

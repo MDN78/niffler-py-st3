@@ -6,6 +6,9 @@ from requests_toolbelt.utils.dump import dump_response
 from allure_commons.types import AttachmentType
 
 from models.category import Category, CategoryAdd
+from tools.logger import get_logger
+
+logger = get_logger("CATEGORY CLIENT")
 
 
 class CategoryHttpClient:
@@ -26,6 +29,7 @@ class CategoryHttpClient:
     @allure.step('HTTP: attach response')
     def attach_response(response: Response, *args, **kwargs):
         attachment_name = response.request.method + " " + response.request.url
+        logger.info(f"API: method and url: {attachment_name}")
         allure.attach(dump_response(response), attachment_name, attachment_type=AttachmentType.TEXT)
 
     @allure.step('HTTP: get categories')

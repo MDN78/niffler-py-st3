@@ -22,6 +22,7 @@ settings = Settings.initialize()
 
 
 def create_allure_environment_file():
+    """Метод формирования системного окружения для отчета allure"""
     # Create list from elements in format: {key}={value}
     items = [f'{key}={value}' for key, value in settings.model_dump().items()]
     # add information about sistem

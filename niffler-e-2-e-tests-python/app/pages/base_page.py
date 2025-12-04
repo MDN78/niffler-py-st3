@@ -1,5 +1,8 @@
 from playwright.sync_api import Page, Response
 import allure
+from tools.logger import get_logger
+
+logger = get_logger("BASE PAGE")
 
 
 class BasePage:
@@ -8,6 +11,7 @@ class BasePage:
 
     @allure.step('UI: open page')
     def visit(self, url: str) -> Response | None:
+        logger.info(f'Visit {url}')
         return self.page.goto(url, wait_until='networkidle')
 
     @allure.step('UI: reload page')

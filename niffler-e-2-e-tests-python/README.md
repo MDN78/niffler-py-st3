@@ -1,25 +1,43 @@
 ## Niffler st3
 
 ### Предусловие
-- собрать проект командой 
+
+- собрать проект командой
+
 ```terminaloutput
 bash docker-compose-dev.sh
 ```
+
 - создать тестового пользователя и указать его данные в файле `.env`
 
-Запуск тестов  параллельно 
+Запуск тестов параллельно
+
 ```commandline
 pytest --numprocesses=2
 ```
 
-### Просмотре отчетов в `Playwright Trace Viewer:`:
-- перейти на сайт `https://trace.playwright.dev/`
+Запуск тестов в `heahed` режиме
+```commandline
+pytest --headed
+```
+
+Просмотр allure отчета
+
+```commandline
+allure serve
+```
+
+Сохраненные логи прогона тестов доступны в файле `log.txt` который будет сформирован в корне проекта после завершения
+тестов
+
+### Просмотр отчетов в `Playwright Trace Viewer:`:
+
 - скачать отчет по нужному тесту из папки проекта `/tracing`
+- перейти на сайт `https://trace.playwright.dev/`
 - загрузить отчет на указанный сайт
 
-
-
 #### Notes
+
 debug devtools
 
 ```commandline

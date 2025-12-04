@@ -3,7 +3,7 @@ import allure
 from playwright.sync_api import Locator, Page, expect
 from tools.logger import get_logger
 
-logger = get_logger("BASE_COMPONENT")
+logger = get_logger("BASE COMPONENT")
 
 
 class Component(ABC):

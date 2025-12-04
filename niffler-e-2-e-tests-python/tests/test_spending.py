@@ -5,6 +5,7 @@ from tools.fakers import fake
 import pytest
 import allure
 from tools.allure.annotations import AllureFeature, AllureStory, AllureTags
+from tools.helper import delete_spend_after_action
 
 pytestmark = [pytest.mark.allure_label("Spends", label_type="epic")]
 
@@ -26,18 +27,19 @@ class TestSpendPage:
 
     @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
-    def test_create_new_spending(self, spends_page):
+    def test_create_new_spending(self, spends_page, envs, spend_db):
         amount = fake.integer()
         category = fake.word()
         description = fake.user_name()
 
         spends_page.create_spend(amount, category, description)
         spends_page.check_spending_exists(category)
-        spends_page.delete_spend(category)
+        # spends_page.delete_spend(category)
+        delete_spend_after_action(envs.test_username, spend_db)
 
     @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
-    def test_delete_spending_via_ui(self, spends_page):
+    def test_delete_spending_via_ui(self, spends_page, envs, spend_db):
         amount = fake.integer()
         category = fake.word()
         description = fake.user_name()
@@ -45,6 +47,9 @@ class TestSpendPage:
         spends_page.create_spend(amount, category, description)
         spends_page.delete_spend(category)
         spends_page.action_should_have_signal_text("Spendings succesfully deleted")
+
+        delete_spend_after_action(envs.test_username, spend_db)
+
 
     @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page
