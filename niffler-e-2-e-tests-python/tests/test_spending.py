@@ -4,10 +4,10 @@ from models.spend import SpendAdd
 from tools.fakers import fake
 import pytest
 import allure
-from tools.allure.annotations import AllureFeature, AllureStory, AllureTags
+from tools.allure.annotations import AllureFeature, AllureStory, AllureTags, AllureEpic
 from tools.helper import delete_spend_after_action
 
-pytestmark = [pytest.mark.allure_label("Spends", label_type="epic")]
+pytestmark = [pytest.mark.allure_label(AllureEpic.NIFFLER, label_type="epic")]
 
 TEST_CATEGORY = "school"
 TEST_CATEGORY_1 = "car"

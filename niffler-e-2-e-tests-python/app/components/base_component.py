@@ -24,13 +24,6 @@ class Component(ABC):
             logger.info(step)
             return self.page.locator(locator)
 
-    def click(self, **kwargs) -> None:
-        step = f'Clicking {self.type_of} with name "{self.name}"'
-        with allure.step(step):
-            logger.info(step)
-            locator = self.get_locator(**kwargs)
-            locator.click()
-
     def should_be_visible(self, **kwargs) -> None:
         step = f'Checking that {self.type_of} "{self.name}" is visible'
         with allure.step(step):

@@ -7,6 +7,10 @@ class AllureTags(str, Enum):
     ACTIONS_DB = "ACTIONS_DB"
 
 
+class AllureEpic(str, Enum):
+    NIFFLER = "Niffler app"
+
+
 class AllureFeature(str, Enum):
     DATABASE = "Database"
     AUTHENTICATION = "Authentication"

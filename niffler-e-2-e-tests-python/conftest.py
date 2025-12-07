@@ -6,7 +6,9 @@ import pytest
 from _pytest.fixtures import SubRequest
 from pytest import Item, FixtureDef, FixtureRequest
 from dotenv import load_dotenv
+from allure_commons.types import AttachmentType
 
+from clients.auth_client import AuthClient
 from clients.spends_client import SpendsHttpClient
 from clients.category_client import CategoryHttpClient
 from databases.spend_db import SpendDb
@@ -176,6 +178,14 @@ def chromium_page_with_state(browser: Browser, initialize_browser_state, request
     context.tracing.stop(path=f'./tracing/{request.node.name}.zip')
     context.close()
     allure.attach.file(f'./tracing/{request.node.name}.zip', name='trace', extension='zip')
+
+
+@pytest.fixture(scope="session")
+def auth_api_token(envs: Envs):
+    """Метод получение аутентификационного токена через OAuth2"""
+    token = AuthClient(envs).auth(envs.test_username, envs.test_password)
+    allure.attach(token, name="token.txt", attachment_type=AttachmentType.TEXT)
+    return token
 
 
 @pytest.fixture
