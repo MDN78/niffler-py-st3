@@ -55,6 +55,10 @@ class Fake:
         return self.faker.random_int(start, end)
 
     def data(self):
+        """
+        Генерирует дату в заданном формате и временном промежутке
+        :return: дата
+        """
         start_date = "-1y"
         end_date = "now"
 

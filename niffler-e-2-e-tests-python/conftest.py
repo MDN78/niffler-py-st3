@@ -81,7 +81,7 @@ def spends_client(envs: Envs, get_token_from_user_state) -> SpendsHttpClient:
     :param get_token_from_user_state: аутентификация пользователя
     :return: instance класса SpendsHttpClient
     """
-    return SpendsHttpClient(envs.gateway_url, get_token_from_user_state)
+    return SpendsHttpClient(envs, get_token_from_user_state)
 
 
 @pytest.fixture(scope='session')
@@ -92,7 +92,7 @@ def category_client(envs: Envs, get_token_from_user_state) -> CategoryHttpClient
     :param get_token_from_user_state: аутентификация пользователя
     :return: instance  класса CategoryHttpClient
     """
-    return CategoryHttpClient(envs.gateway_url, get_token_from_user_state)
+    return CategoryHttpClient(envs, get_token_from_user_state)
 
 
 @pytest.fixture(scope="session")

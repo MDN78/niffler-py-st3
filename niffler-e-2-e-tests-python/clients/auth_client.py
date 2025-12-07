@@ -6,7 +6,7 @@ from models.oauth import OAuthRequest
 
 
 class AuthClient:
-    """Авторизует по Oauth2.0"""
+    """Авторизует по OAuth2.0"""
     session: AuthSession
     base_url: str
 
@@ -17,7 +17,7 @@ class AuthClient:
         self.code_verifier, self.code_challenge = pkce.generate_pkce_pair()
         self.token = None
 
-    def auth(self, username, password):
+    def auth(self, username: str, password: str):
         """
         Возвращает token oauth для авторизации пользователя с username и password
         1. Получаем jsessionid и xsrf-token куку в сессию.

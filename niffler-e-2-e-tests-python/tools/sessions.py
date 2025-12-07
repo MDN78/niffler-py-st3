@@ -1,6 +1,6 @@
 import requests
 from urllib.parse import parse_qs, urlparse
-# from utils.allure_helper import allure_attach_request
+from tools.allure.allure_helper import allure_attach_request
 from requests import Session
 
 
@@ -25,8 +25,8 @@ class BaseSession(Session):
         super().__init__()
         self.base_url = kwargs.pop("base_url", "")
 
-    # @raise_for_status
-    # @allure_attach_request
+    @raise_for_status
+    @allure_attach_request
     def request(self, method, url, **kwargs):
         """Логирование запроса и вклейка base_url."""
         return super().request(method, self.base_url + url, **kwargs)
@@ -37,12 +37,16 @@ class AuthSession(Session):
     + Авто сохранение cookies внутри сессии из каждого response и redirect response, и 'code' авторизации."""
 
     def __init__(self, *args, **kwargs):
+        """
+        :param args: base_irl - авторизация из env
+        :param kwargs: code - код авторизации из redirect_uri
+        """
         super().__init__()
         self.base_url = kwargs.pop("base_url", "")
         self.code = None
 
-    # @raise_for_status
-    # @allure_attach_request
+    @raise_for_status
+    @allure_attach_request
     def request(self, method, url, **kwargs):
         """Сохраняем все cookies из redirect'a и сохраняем code авторизации из redirect_uri,
         И используем в дальнейшем в последующих запросах этой сессии."""
