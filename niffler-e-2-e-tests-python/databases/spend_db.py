@@ -26,7 +26,8 @@ class SpendDb:
     def attach_sql(cursor, statement, parameters, context):
         statement_with_params = statement % parameters
         name = statement.split(" ")[0] + " " + context.engine.url.database
-        logger.info(f"{statement_with_params} {name}")
+        # logger.info(f"{statement_with_params} {name}")
+        logger.info(f"{name}")
         allure.attach(statement_with_params, name=name, attachment_type=AttachmentType.TEXT)
 
     @allure.step('DB: get user {username} categories')

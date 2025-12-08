@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from _pytest.fixtures import FixtureRequest
@@ -6,6 +7,10 @@ from clients.spends_client import SpendsHttpClient
 from databases.spend_db import SpendDb
 from models.category import CategoryAdd
 from models.config import Envs
+
+from tools.logger import get_logger
+
+logger = get_logger("FIXTURES")
 
 
 @pytest.fixture(scope='session')
@@ -52,7 +57,8 @@ def category(request: FixtureRequest, category_client: CategoryHttpClient, spend
     category_name = request.param
     category = category_client.add_category(CategoryAdd(name=category_name))
     yield category.name
-    spend_db.delete_category(category.id)
+    with allure.step('DB. Delete category'):
+        spend_db.delete_category(category.id)
 
 
 @pytest.fixture(params=[])
@@ -72,6 +78,8 @@ def spends(request: FixtureRequest, spends_client: SpendsHttpClient):
     """
     t_spend = spends_client.add_spends(request.param)
     yield t_spend
-    all_spends = spends_client.get_spends()
-    if t_spend.id in [spend.id for spend in all_spends]:
-        spends_client.remove_spends([t_spend.id])
+    with allure.step('HTTP client. Delete spends'):
+        logger.info(f'Delete spend')
+        all_spends = spends_client.get_spends()
+        if t_spend.id in [spend.id for spend in all_spends]:
+            spends_client.remove_spends([t_spend.id])
