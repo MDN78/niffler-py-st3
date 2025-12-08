@@ -6,6 +6,7 @@ from tools.assertions.base import assert_equal
 
 logger = get_logger("SPENDS ASSERTIONS")
 
+
 @allure.step("Check spend")
 def assert_spend(actual: Spend, expected: Union[Spend, SpendAdd]):
     """
@@ -20,4 +21,3 @@ def assert_spend(actual: Spend, expected: Union[Spend, SpendAdd]):
     assert_equal(actual.currency, expected.currency, "currency")
     assert_equal(actual.description, expected.description, "description")
     assert_equal(actual.category.name, expected.category.name, "category")
-

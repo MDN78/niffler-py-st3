@@ -5,7 +5,7 @@ from marks import TestData
 from models.category import CategoryAdd
 from databases.spend_db import SpendDb
 from models.spend import SpendAdd, Spend
-from tools.assertions.base import assert_equal, assert_length
+from tools.assertions.base import assert_length
 from tools.assertions.spends import assert_spend
 from tools.allure.annotations import AllureFeature, AllureStory, AllureTags, AllureEpic
 
@@ -77,7 +77,7 @@ class TestApiSpends:
     @allure.story(AllureStory.SPEND)
     @TestData.category('vehicles')
     @TestData.spends(SpendAdd(category=CategoryAdd(name='vehicles')))
-    def test_update_spend_currency_EUR(self, category, spends, spends_client: SpendsHttpClient, spend_db):
+    def test_update_spend_currency_eur(self, category, spends, spends_client: SpendsHttpClient, spend_db):
         updated_info = Spend(
             id=spends.id,
             spendDate=spends.spendDate,
