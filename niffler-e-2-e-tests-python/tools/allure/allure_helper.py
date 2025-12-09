@@ -1,8 +1,7 @@
 import json
-from json import JSONDecodeError
-
 import allure
 import curlify
+from json import JSONDecodeError
 from allure_commons.types import AttachmentType
 from requests import Response
 from tools.logger import get_logger
@@ -22,9 +21,6 @@ def allure_attach_request(function):
             curl = curlify.to_curl(response.request)
             url = response.request.url
             logger.info(f'API: Method and URL: {method} {url}')
-
-            # logging.debug(curl)
-            # logging.debug(response.text)
 
             allure.attach(
                 body=curl.encode("utf8"),

@@ -1,5 +1,5 @@
-from typing import Any, Sized
 import allure
+from typing import Any, Sized
 from tools.logger import get_logger
 
 logger = get_logger("BASE ASSERTIONS")

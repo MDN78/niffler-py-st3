@@ -1,6 +1,5 @@
 from datetime import datetime
 from pydantic import BaseModel
-
 from models.category import CategoryAdd, Category
 from sqlmodel import Field, SQLModel
 from tools.fakers import fake

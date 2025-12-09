@@ -7,7 +7,6 @@ from clients.spends_client import SpendsHttpClient
 from databases.spend_db import SpendDb
 from models.category import CategoryAdd
 from models.config import Envs
-
 from tools.logger import get_logger
 
 logger = get_logger("FIXTURES")

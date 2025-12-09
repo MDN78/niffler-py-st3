@@ -1,11 +1,9 @@
-from collections.abc import Sequence
-
 import allure
-from allure_commons.types import AttachmentType
 
+from collections.abc import Sequence
+from allure_commons.types import AttachmentType
 from sqlalchemy import create_engine, Engine, event
 from sqlmodel import Session, select, delete
-
 from models.category import Category
 from models.spend import SpendSQL
 from tools.logger import get_logger
@@ -26,7 +24,6 @@ class SpendDb:
     def attach_sql(cursor, statement, parameters, context):
         statement_with_params = statement % parameters
         name = statement.split(" ")[0] + " " + context.engine.url.database
-        # logger.info(f"{statement_with_params} {name}")
         logger.info(f"{name}")
         allure.attach(statement_with_params, name=name, attachment_type=AttachmentType.TEXT)
 
