@@ -10,7 +10,6 @@ pytestmark = [pytest.mark.allure_label(AllureEpic.NIFFLER, label_type="epic")]
 TEST_CATEGORY = "school"
 
 
-# @pytest.mark.skip
 @allure.tag(AllureTags.ACTIONS_UI)
 @allure.feature(AllureFeature.CATEGORY)
 class TestCategories:
@@ -37,7 +36,6 @@ class TestCategories:
         profile_page.check_error_message(f"Error while adding category {same_category}: Cannot save duplicates")
 
 
-# @pytest.mark.skip
 @allure.tag(AllureTags.ACTIONS_UI)
 @allure.feature(AllureFeature.PROFILE)
 class TestProfileInfo:

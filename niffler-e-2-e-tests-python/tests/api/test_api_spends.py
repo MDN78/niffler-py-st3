@@ -51,10 +51,21 @@ class TestApiSpends:
         spend_db.delete_category(response.category.id)
 
     @allure.story(AllureStory.SPEND)
+    def test_add_spend_with_minimal_amount(self, spends_client: SpendsHttpClient, spend_db: SpendDb):
+        request = SpendAdd(amount=0.01, category=CategoryAdd())
+        response = spends_client.add_spends(request)
+
+        assert_spend(response, request)
+
+        spends_client.remove_spends([response.id])
+        spend_db.delete_category(response.category.id)
+
+    @allure.story(AllureStory.SPEND)
     @TestData.spends(SpendAdd(category=CategoryAdd()))
     def test_remove_spend(self, spends, spend_db: SpendDb, spends_client: SpendsHttpClient):
         spends_client.remove_spends([spends.id])
         response = spends_client.get_spends()
+
         assert_length(response, [], 'Model spends')
         spend_db.delete_category(spends.category.id)
 

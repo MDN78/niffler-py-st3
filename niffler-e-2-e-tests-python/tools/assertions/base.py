@@ -56,3 +56,19 @@ def assert_length(actual: Sized, expected: Sized, name: str):
             f'Expected length: {len(expected)}. '
             f'Actual length: {len(actual)}'
         )
+
+
+def assert_greater_than_zero(actual: Any, name: str):
+    """
+    Проверяет, что фактическое значение больше нуля.
+
+    :param name: Название проверяемого значения.
+    :param actual: Фактическое значение.
+    :raises AssertionError: Если значение не больше нуля.
+    """
+    logger.info(f'Check that "{name}" is greater than 0')
+    assert actual > 0, (
+        f'Incorrect value: "{name}". '
+        f'Expected: greater than 0. '
+        f'Actual value: {actual}'
+    )

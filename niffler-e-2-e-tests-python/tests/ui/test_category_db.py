@@ -11,7 +11,6 @@ pytestmark = [pytest.mark.allure_label(AllureEpic.NIFFLER, label_type="epic")]
 TEST_CATEGORY = "database"
 
 
-# @pytest.mark.skip
 @allure.tag(AllureTags.ACTIONS_DB)
 @allure.feature(AllureFeature.DATABASE)
 class TestDatabase:
