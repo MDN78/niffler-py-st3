@@ -2,12 +2,11 @@ from tools.fakers import fake
 from marks import Pages
 import pytest
 import allure
-from tools.allure.annotations import AllureFeature, AllureStory, AllureTags
+from tools.allure.annotations import AllureFeature, AllureStory, AllureTags, AllureEpic
 
-pytestmark = [pytest.mark.allure_label("Authentication", label_type="epic")]
+pytestmark = [pytest.mark.allure_label(AllureEpic.NIFFLER, label_type="epic")]
 
 
-# @pytest.mark.skip
 @allure.tag(AllureTags.ACTIONS_UI)
 @allure.feature(AllureFeature.AUTHENTICATION)
 class TestAuthentication:

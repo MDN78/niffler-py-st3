@@ -1,4 +1,5 @@
 from faker import Faker
+import random
 
 
 class Fake:
@@ -11,6 +12,8 @@ class Fake:
         :param faker: Экземпляр класса Faker, который будет использоваться для генерации данных.
         """
         self.faker = faker
+        self.faker.seed_instance(42)
+        self.user_random = random.Random()
 
     def user_name(self) -> str:
         """
@@ -18,7 +21,10 @@ class Fake:
 
         :return: Случайное имя.
         """
-        return self.faker.user_name()
+        # return self.faker.user_name()
+
+        self.user_random.seed()
+        return f"user_{self.user_random.randint(10000, 99999)}_{self.faker.user_name()}"
 
     def password(self) -> str:
         """
@@ -55,6 +61,10 @@ class Fake:
         return self.faker.random_int(start, end)
 
     def data(self):
+        """
+        Генерирует дату в заданном формате и временном промежутке
+        :return: дата
+        """
         start_date = "-1y"
         end_date = "now"
 

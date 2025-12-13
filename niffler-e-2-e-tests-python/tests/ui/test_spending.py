@@ -4,10 +4,10 @@ from models.spend import SpendAdd
 from tools.fakers import fake
 import pytest
 import allure
-from tools.allure.annotations import AllureFeature, AllureStory, AllureTags
+from tools.allure.annotations import AllureFeature, AllureStory, AllureTags, AllureEpic
 from tools.helper import delete_spend_after_action
 
-pytestmark = [pytest.mark.allure_label("Spends", label_type="epic")]
+pytestmark = [pytest.mark.allure_label(AllureEpic.NIFFLER, label_type="epic")]
 
 TEST_CATEGORY = "school"
 TEST_CATEGORY_1 = "car"
@@ -15,7 +15,6 @@ TEST_CATEGORY_2 = "city"
 TEST_CATEGORY_3 = "country"
 
 
-# @pytest.mark.skip
 @allure.tag(AllureTags.ACTIONS_UI)
 @allure.feature(AllureFeature.SPENDS)
 class TestSpendPage:
@@ -34,7 +33,7 @@ class TestSpendPage:
 
         spends_page.create_spend(amount, category, description)
         spends_page.check_spending_exists(category)
-        # spends_page.delete_spend(category)
+
         delete_spend_after_action(envs.test_username, spend_db)
 
     @allure.story(AllureStory.SPEND)
@@ -49,7 +48,6 @@ class TestSpendPage:
         spends_page.action_should_have_signal_text("Spendings succesfully deleted")
 
         delete_spend_after_action(envs.test_username, spend_db)
-
 
     @allure.story(AllureStory.SPEND)
     @Pages.open_spend_page

@@ -76,7 +76,7 @@ class SpendPage(BasePage):
         signal_text.filter(has_text=category).all()
         # self.page.locator('.table.spendings-table td').filter(has_text=category).all()
 
-    @allure.step('UI: delete spend')
+    @allure.step('UI: delete spend by category name')
     def delete_spend(self, name_category: str) -> None:
         """Метод удаления затраты по наименованию категории
         :param name_category: наименование категории

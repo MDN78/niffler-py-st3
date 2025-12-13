@@ -9,19 +9,29 @@ bash docker-compose-dev.sh
 ```
 
 - создать тестового пользователя и указать его данные в файле `.env`
+Пример тестовго пользователя:
+```dotenv
+TEST_USERNAME=niffler_11St
+TEST_PASSWORD=QEwdr!ss2f
+```
 
-Запуск тестов параллельно
+#### Запуск тестов:
+- стандартный запуск:
+```commandline
+pytest
+```
+- параллельно
 
 ```commandline
 pytest --numprocesses=2
 ```
 
-Запуск тестов в `heahed` режиме
+- в `heahed` режиме
 ```commandline
 pytest --headed
 ```
 
-Просмотр allure отчета
+#### Просмотр allure отчета
 
 ```commandline
 allure serve
