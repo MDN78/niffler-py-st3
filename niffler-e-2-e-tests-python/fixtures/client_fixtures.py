@@ -9,6 +9,9 @@ from models.category import CategoryAdd
 from models.config import Envs
 from tools.logger import get_logger
 
+from databases.auth_db import UserDb
+from databases.userdata_db import UserdataDb
+
 logger = get_logger("FIXTURES")
 
 
@@ -82,3 +85,23 @@ def spends(request: FixtureRequest, spends_client: SpendsHttpClient):
         all_spends = spends_client.get_spends()
         if t_spend.id in [spend.id for spend in all_spends]:
             spends_client.remove_spends([t_spend.id])
+
+
+@pytest.fixture(scope="session")
+def auth_db(envs: Envs) -> UserDb:
+    """
+    Метод возвращения instance класса UserDb
+    :param envs: загрузка данный с env файла
+    :return: instance класса UserDb
+    """
+    return UserDb(envs)
+
+
+@pytest.fixture()
+def user_db(envs: Envs) -> UserdataDb:
+    """
+    Метод возвращения instance класса UserdataDb
+    :param envs: загрузка данный с env файла
+    :return: instance класса UserdataDb
+    """
+    return UserdataDb(envs)

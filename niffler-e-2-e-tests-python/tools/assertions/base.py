@@ -40,6 +40,24 @@ def assert_equal(actual: Any, expected: Any, name: str):
     )
 
 
+@allure.step("Check that {name} unequals to {expected}")
+def assert_unequal(actual: Any, expected: Any, name: str):
+    """
+    Проверяет, что фактическое значение не равно ожидаемому.
+
+    :param name: Название проверяемого значения.
+    :param actual: Фактическое значение.
+    :param expected: Ожидаемое значение.
+    :raises AssertionError: Если фактическое значение не равно ожидаемому.
+    """
+    logger.info(f'Check that "{name}" unequals to zero')
+    assert actual != expected, (
+        f'Incorrect value: "{name}". '
+        f'Expected value: {expected}. '
+        f'Actual value: {actual}'
+    )
+
+
 def assert_length(actual: Sized, expected: Sized, name: str):
     """
     Проверяет, что длины двух объектов совпадают.

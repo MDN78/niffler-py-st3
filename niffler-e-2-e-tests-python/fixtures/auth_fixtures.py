@@ -64,3 +64,13 @@ def auth_api_token(envs: Envs):
     token = AuthClient(envs).auth(envs.test_username, envs.test_password)
     allure.attach(token, name="token.txt", attachment_type=AttachmentType.TEXT)
     return token
+
+
+@pytest.fixture(scope="session")
+def auth_client(envs: Envs) -> AuthClient:
+    """
+    Метод возвращения instance класса AuthClient
+    :param envs: загрузка данный с env файла
+    :return: instance класса AuthClient
+    """
+    return AuthClient(envs)

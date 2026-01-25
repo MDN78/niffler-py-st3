@@ -1,7 +1,8 @@
-from tools.fakers import fake
-from marks import Pages
 import pytest
 import allure
+
+from tools.fakers import fake
+from marks import Pages
 from tools.allure.annotations import AllureFeature, AllureStory, AllureTags, AllureEpic
 
 pytestmark = [pytest.mark.allure_label(AllureEpic.NIFFLER, label_type="epic")]

@@ -8,7 +8,7 @@ from models.config import Envs
 from tools.allure.reportet import allure_reporter, allure_logger
 from tools.allure.environment import create_allure_environment_file
 
-pytest_plugins = ["fixtures.auth_fixtures", "fixtures.client_fixtures", "fixtures.pages_fixtures"]
+pytest_plugins = ["fixtures.auth_fixtures", "fixtures.client_fixtures", "fixtures.pages_fixtures", "fixtures.kafka_fixtures"]
 
 
 @pytest.hookimpl(hookwrapper=True, trylast=True)
@@ -55,5 +55,8 @@ def envs() -> Envs:
         profile_url=os.getenv("PROFILE_URL"),
         spend_db_url=os.getenv("SPEND_DB_URL"),
         test_username=os.getenv("TEST_USERNAME"),
-        test_password=os.getenv("TEST_PASSWORD")
+        test_password=os.getenv("TEST_PASSWORD"),
+        kafka_address=os.getenv("KAFKA_ADDRESS"),
+        userdata_db_url=os.getenv("USERDATA_DB_URL"),
+        auth_db_url=os.getenv("AUTH_DB_URL")
     )
