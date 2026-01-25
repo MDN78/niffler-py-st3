@@ -6,6 +6,7 @@ class AllureTags(str, Enum):
     ACTIONS_UI = "ACTIONS_UI"
     ACTIONS_DB = "ACTIONS_DB"
     ACTIONS_API = "ACTIONS_API"
+    KAFKA = "Паблишинг сообщений в кафку"
 
 
 class AllureEpic(str, Enum):
@@ -18,6 +19,7 @@ class AllureFeature(str, Enum):
     CATEGORY = "Category"
     SPENDS = "Spends"
     PROFILE = "Profile"
+    KAFKA = "Publishing messages to Kafka"
 
 
 class AllureStory(str, Enum):
@@ -27,3 +29,5 @@ class AllureStory(str, Enum):
     AUTHENTICATION = "Authentication"
     WRONG_AUTHENTICATION = "Wrong Authentication"
     NAVIGATION = "Navigation"
+    KAFKA_MESSAGE = "Message with User publishing to Kafka after successful registration"
+    KAFKA_PRODUCING = "Filling userdata exclude auth"

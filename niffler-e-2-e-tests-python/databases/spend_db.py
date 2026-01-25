@@ -4,11 +4,12 @@ from collections.abc import Sequence
 from allure_commons.types import AttachmentType
 from sqlalchemy import create_engine, Engine, event
 from sqlmodel import Session, select, delete
+
 from models.category import Category
 from models.spend import SpendSQL
 from tools.logger import get_logger
 
-logger = get_logger("SQL DATABASE")
+logger = get_logger("SQL DATABASE SPENDS AND CATEGORY")
 
 
 class SpendDb:
