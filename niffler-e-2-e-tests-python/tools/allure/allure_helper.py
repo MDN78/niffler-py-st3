@@ -95,7 +95,8 @@ def allure_request_logger(function):
         response: Response = function(*args, **kwargs)
         method = response.request.method
         url = response.request.url
-        logger.info(f'SOAP REQUEST {method} {url}')
+        with allure.step(f"Soap session. Request method: {method}, endpoint: {url}"):
+            logger.info(f'SOAP REQUEST {method} {url}')
         return response
 
     return wrapper

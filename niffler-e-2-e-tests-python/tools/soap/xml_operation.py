@@ -1,3 +1,4 @@
+import allure
 from xml.etree import ElementTree
 
 # Определение пространств имен
@@ -7,6 +8,7 @@ namespaces = {
 }
 
 
+@allure.step('Extract text from xml element')
 def safe_find_text(element, path, namespaces=None, default=None):
     """
     Функция извлечения текста из XML-элемента.
@@ -18,6 +20,7 @@ def safe_find_text(element, path, namespaces=None, default=None):
     return elem.text if elem is not None else default
 
 
+@allure.step('Parsing current user xml string')
 def current_user_result_operation(xml_str: str):
     """
     Функция для парсинга XML-данных, полученных из SOAP-сервиса
