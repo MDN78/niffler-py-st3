@@ -7,6 +7,7 @@ class AllureTags(str, Enum):
     ACTIONS_DB = "ACTIONS_DB"
     ACTIONS_API = "ACTIONS_API"
     KAFKA = "Паблишинг сообщений в кафку"
+    SOAP = "SOAP"
 
 
 class AllureEpic(str, Enum):
@@ -20,6 +21,7 @@ class AllureFeature(str, Enum):
     SPENDS = "Spends"
     PROFILE = "Profile"
     KAFKA = "Publishing messages to Kafka"
+    SOAP = "Sending messages to Soap"
 
 
 class AllureStory(str, Enum):
@@ -31,3 +33,4 @@ class AllureStory(str, Enum):
     NAVIGATION = "Navigation"
     KAFKA_MESSAGE = "Message with User publishing to Kafka after successful registration"
     KAFKA_PRODUCING = "Filling userdata exclude auth"
+    SOAP_GET_USER_INFO = 'Getting info about existing user by username'

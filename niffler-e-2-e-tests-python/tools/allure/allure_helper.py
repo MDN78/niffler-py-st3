@@ -88,3 +88,14 @@ def allure_attach_request(function):
         return response
 
     return wrapper
+
+
+def allure_request_logger(function):
+    def wrapper(*args, **kwargs):
+        response: Response = function(*args, **kwargs)
+        method = response.request.method
+        url = response.request.url
+        logger.info(f'SOAP REQUEST {method} {url}')
+        return response
+
+    return wrapper
