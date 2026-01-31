@@ -58,6 +58,7 @@ def assert_unequal(actual: Any, expected: Any, name: str):
     )
 
 
+@allure.step("Check length objects")
 def assert_length(actual: Sized, expected: Sized, name: str):
     """
     Проверяет, что длины двух объектов совпадают.
@@ -76,6 +77,7 @@ def assert_length(actual: Sized, expected: Sized, name: str):
         )
 
 
+@allure.step("Check that actual dates greater than zero")
 def assert_greater_than_zero(actual: Any, name: str):
     """
     Проверяет, что фактическое значение больше нуля.
@@ -89,4 +91,24 @@ def assert_greater_than_zero(actual: Any, name: str):
         f'Incorrect value: "{name}". '
         f'Expected: greater than 0. '
         f'Actual value: {actual}'
+    )
+
+
+@allure.step("Check that {name} exists")
+def assert_exists(dates: Any, name: str):
+    logger.info(f'Check that "{name}" exists')
+    assert dates, (
+        f'Incorrect value: "{dates}". '
+        f'Expected value: {dates}. '
+        f'Actual value: {dates}'
+    )
+
+
+@allure.step("Check that {name} non exists")
+def assert_non_exists(dates: Any, name: str):
+    logger.info(f'Check that "{name}" non exists')
+    assert not dates, (
+        f'Incorrect value: "{dates}". '
+        f'Expected value: {dates}. '
+        f'Actual value: {dates}'
     )
