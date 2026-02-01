@@ -62,3 +62,8 @@ def envs() -> Envs:
         auth_db_url=os.getenv("AUTH_DB_URL"),
         soap_address=os.getenv("SOAP_ADDRESS")
     )
+
+def pytest_configure(config):
+    # Генерируем уникальное имя БД для каждого worker
+    worker_id = os.environ.get('PYTEST_XDIST_WORKER', 'master')
+    os.environ['DB_NAME'] = f"test_db_{worker_id}"
