@@ -43,23 +43,21 @@ class SpendsHttpClient:
         assert_status_code(response.status_code, HTTPStatus.OK)
         return Spend.model_validate(response.json())
 
-    @allure.step('HTTP: Получить id всех категорий пользователя')
+    @allure.step('HTTP: Get id all users categories')
     def get_ids_all_categories(self, exclude_archived: bool = False) -> list[str]:
-        _resp = self.session.get('/api/categories/all', params={'archived': exclude_archived})
-        return [cat['id'] for cat in _resp.json()]
+        response = self.session.get('/api/categories/all', params={'archived': exclude_archived})
+        return [cat['id'] for cat in response.json()]
 
-
-    @allure.step('HTTP: Удалить трату')
+    @allure.step('HTTP: Delete spend by ID')
     def delete_spending_by_id(self, spending_id: str) -> int:
-        _resp = self.session.delete(f'/api/spends/remove?ids={spending_id}')
-        return _resp.status_code
+        response = self.session.delete(f'/api/spends/remove?ids={spending_id}')
+        return response.status_code
 
-
-    @allure.step('HTTP: Получить id всех трат пользователя')
+    @allure.step('HTTP: Get ID all users spends')
     def get_ids_all_spending(self) -> list[str]:
         ids = []
         for currency in ['RUB', 'KZT', 'USD', 'EUR']:
-            _resp = self.session.get(f'/api/spends/all?filterCurrency={currency}')
-            body = _resp.json()
+            response = self.session.get(f'/api/spends/all?filterCurrency={currency}')
+            body = response.json()
             ids += [spend['id'] for spend in body]
         return ids
