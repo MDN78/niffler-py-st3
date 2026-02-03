@@ -42,3 +42,24 @@ class SpendsHttpClient:
         response = self.session.patch("/api/spends/edit", data=update.model_dump_json())
         assert_status_code(response.status_code, HTTPStatus.OK)
         return Spend.model_validate(response.json())
+
+    @allure.step('HTTP: Получить id всех категорий пользователя')
+    def get_ids_all_categories(self, exclude_archived: bool = False) -> list[str]:
+        _resp = self.session.get('/api/categories/all', params={'archived': exclude_archived})
+        return [cat['id'] for cat in _resp.json()]
+
+
+    @allure.step('HTTP: Удалить трату')
+    def delete_spending_by_id(self, spending_id: str) -> int:
+        _resp = self.session.delete(f'/api/spends/remove?ids={spending_id}')
+        return _resp.status_code
+
+
+    @allure.step('HTTP: Получить id всех трат пользователя')
+    def get_ids_all_spending(self) -> list[str]:
+        ids = []
+        for currency in ['RUB', 'KZT', 'USD', 'EUR']:
+            _resp = self.session.get(f'/api/spends/all?filterCurrency={currency}')
+            body = _resp.json()
+            ids += [spend['id'] for spend in body]
+        return ids

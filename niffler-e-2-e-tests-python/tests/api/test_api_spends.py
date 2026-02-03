@@ -1,5 +1,9 @@
 import allure
 import pytest
+import time
+
+from filelock import FileLock
+
 from clients.spends_client import SpendsHttpClient
 from marks import TestData
 from models.category import CategoryAdd
@@ -10,6 +14,35 @@ from tools.assertions.spends import assert_spend
 from tools.allure.annotations import AllureFeature, AllureStory, AllureTags, AllureEpic
 
 pytestmark = [pytest.mark.allure_label(AllureEpic.NIFFLER, label_type="epic")]
+
+
+@pytest.fixture(scope="module", autouse=True)
+def module_fixture(tmp_path_factory, worker_id, spends_client: SpendsHttpClient, spend_db: SpendDb):
+    """Подготовка модуля перед тестом - очистка базы"""
+    def _prepare_state():
+        categories_ids = spends_client.get_ids_all_categories()
+        spend_db.delete_categories_by_ids(categories_ids)
+        all_spends_ids = spends_client.get_ids_all_spending()
+        for spend_id in all_spends_ids:
+            spends_client.delete_spending_by_id(spend_id)
+
+    if worker_id == "master":
+        _prepare_state()
+
+    root_tmp_dir = tmp_path_factory.getbasetemp().parent
+
+    fn = root_tmp_dir / "prepare"
+    with FileLock(str(fn) + ".lock"):
+        if fn.is_file():
+            pass
+        else:
+            _prepare_state()
+
+
+@pytest.fixture(scope='function', autouse=True)
+def wait_before_run_test():
+    """Ожидание для отработки фикстуры модуля при параллельном запуске"""
+    time.sleep(1)
 
 
 @allure.tag(AllureTags.ACTIONS_API)
