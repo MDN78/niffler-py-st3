@@ -85,10 +85,10 @@ jobs:
 
       - name: Generate Allure Report
         if: always()
-        uses: allure-framework/allure-cli-action@v1
+        uses: simple-elf/allure-report-action@v1.8
         with:
           allure_results: niffler-e-2-e-tests-python/allure-results
-          allure_history: niffler-e-2-e-tests-python/allure-history
+#          allure_history: niffler-e-2-e-tests-python/allure-history
           allure_report: niffler-e-2-e-tests-python/allure-report
 
       - name: Upload Allure Report as artifact
