@@ -1,0 +1,21 @@
+INFO     BASE PAGE:base_page.py:14 Visit http://frontend.niffler.dc
+INFO     BUTTON:button.py:16 Clicking button with name "New spend button"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "//a[.="New spending"]"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: ".MuiTypography-root.MuiTypography-h5.css-w1t7b3"
+INFO     BASE COMPONENT:base_component.py:38 Checking that text "New spending title" has text "Add new spending"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "#amount"
+INFO     INPUT:input.py:18 Fill input "Amount" to value "47"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "#category"
+INFO     INPUT:input.py:18 Fill input "Category" to value "discuss"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "#description"
+INFO     INPUT:input.py:18 Fill input "Description" to value "user_44369_williamdavis"
+INFO     BUTTON:button.py:16 Clicking button with name "Add spending button"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "#save"
+INFO     BUTTON:button.py:16 Clicking button with name "Button delete spend"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "#delete"
+INFO     BUTTON:button.py:16 Clicking button with name "Confirm delete spend"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "//div[@role='dialog']//button[contains(text(), 'Delete')]"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "//div[@role='presentation']//div[contains(text(), 'Spendings succesfully deleted')]"
+INFO     BASE COMPONENT:base_component.py:38 Checking that text "Description successful delete spend" has text "Spendings succesfully deleted"
+INFO     TOOLS HELPER:helper.py:22 Delete niffler_st3 spends in database
+INFO     SQL DATABASE SPENDS AND CATEGORY:spend_db.py:28 DELETE niffler-spend

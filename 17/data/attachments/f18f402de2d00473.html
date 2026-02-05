@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset = UTF-8">
+    <script src="https://yastatic.net/jquery/2.2.3/jquery.min.js" crossorigin="anonymous"></script>
+
+    <link href="https://yastatic.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <link type="text/css" href="https://yandex.st/highlightjs/8.0/styles/github.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/bash.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/json.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/xml.min.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <pre><code>POST to http://gateway.niffler.dc:8090/api/spends/add</code></pre>
+</div>
+
+
+    <h4>Body</h4>
+    <div>
+        <pre><code>b'{"amount": 70, "description": "New Roberttown", "category": {"name": "vehicles", "username": null, "archived": null}, "spendDate": "2025-03-11T20:24:44.948Z", "currency": "RUB"}'</code></pre>
+    </div>
+
+
+
+
+    <h4>Headers</h4>
+    <div>
+    
+        <div>
+            <pre><code><b>User-Agent</b>: python-requests/2.32.5</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Accept-Encoding</b>: gzip, deflate</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Accept</b>: application/json</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Connection</b>: keep-alive</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Authorization</b>: Bearer eyJraWQiOiI4MTkxMzcxOS1mZDRlLTQ4NjktOGUwYS02NzM0NGM1ZWY5ZWEiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJuaWZmbGVyX3N0MyIsImF1ZCI6ImNsaWVudCIsIm5iZiI6MTc3MDMyNDcwOCwic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9hdXRoLm5pZmZsZXIuZGM6OTAwMCIsImV4cCI6MTc3MDMyODMwOCwiaWF0IjoxNzcwMzI0NzA4LCJqdGkiOiIzYjg4MjJjNS1mZjhmLTQwYjUtYTU3Yi00ZTY4YzU5ZTY2YzQifQ.CMibtYxYR1DXYBLqM13ksk96aVp4yMMCOfPA9Jgct3u3QKvnPsinZH7mkuPU0WV7I-Zs0j2YCLVE58wRmFIWJPvBRneZLyOmSxJMCa_diwP0KZZ2nlsA9KE-QPIBt7UTzgmR2cch8-VmWSML5OQBq8MvAY9lygoMO8G2vRsHH5QeDNX6pxDRoKMCDlInHyrmPtaNtO4j9aSGdBRvbMC718EGJroXUTI1ECJjCcCuz_yPIG4FJ85WmnXapKorT0psQZupYKs1snSX4IIuzmaT4cF1PeSuRgj2Xf9hiMKIr7SIHIjZbkC0EMAGQqxee8FiD9HRNtPY2vORHf0Sz_WAFw</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Content-Type</b>: application/json</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Content-Length</b>: 177</code></pre>
+        </div>
+    
+    </div>
+
+
+
+
+
+
+    <h4>Curl</h4>
+    <div>
+        <pre><code>curl -H 'User-Agent: python-requests/2.32.5' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJraWQiOiI4MTkxMzcxOS1mZDRlLTQ4NjktOGUwYS02NzM0NGM1ZWY5ZWEiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJuaWZmbGVyX3N0MyIsImF1ZCI6ImNsaWVudCIsIm5iZiI6MTc3MDMyNDcwOCwic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9hdXRoLm5pZmZsZXIuZGM6OTAwMCIsImV4cCI6MTc3MDMyODMwOCwiaWF0IjoxNzcwMzI0NzA4LCJqdGkiOiIzYjg4MjJjNS1mZjhmLTQwYjUtYTU3Yi00ZTY4YzU5ZTY2YzQifQ.CMibtYxYR1DXYBLqM13ksk96aVp4yMMCOfPA9Jgct3u3QKvnPsinZH7mkuPU0WV7I-Zs0j2YCLVE58wRmFIWJPvBRneZLyOmSxJMCa_diwP0KZZ2nlsA9KE-QPIBt7UTzgmR2cch8-VmWSML5OQBq8MvAY9lygoMO8G2vRsHH5QeDNX6pxDRoKMCDlInHyrmPtaNtO4j9aSGdBRvbMC718EGJroXUTI1ECJjCcCuz_yPIG4FJ85WmnXapKorT0psQZupYKs1snSX4IIuzmaT4cF1PeSuRgj2Xf9hiMKIr7SIHIjZbkC0EMAGQqxee8FiD9HRNtPY2vORHf0Sz_WAFw' -H 'Content-Type: application/json' -H 'Content-Length: 177' -d '{"amount": 70, "description": "New Roberttown", "category": {"name": "vehicles", "username": null, "archived": null}, "spendDate": "2025-03-11T20:24:44.948Z", "currency": "RUB"}' http://gateway.niffler.dc:8090/api/spends/add</code></pre>
+    </div>
+
+</body>
+</html>
