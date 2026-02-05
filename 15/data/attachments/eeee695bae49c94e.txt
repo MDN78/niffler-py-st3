@@ -1,0 +1,13 @@
+INFO     BASE PAGE:base_page.py:14 Visit http://frontend.niffler.dc
+INFO     BUTTON:button.py:16 Clicking button with name "register button"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "[class="form__register"]"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "input[name=username]"
+INFO     INPUT:input.py:18 Fill input "username" to value "user_23901_stevennelson"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "input[name=password]"
+INFO     INPUT:input.py:18 Fill input "password" to value "Bi_8lHHvTf"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "input[name=passwordSubmit]"
+INFO     INPUT:input.py:18 Fill input "submit password" to value "Bi_8lHHvTf"
+INFO     BUTTON:button.py:16 Clicking button with name "submit"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "button[type=submit]"
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: ".form__paragraph"
+INFO     BASE COMPONENT:base_component.py:38 Checking that text "successful registration" has text "Congratulations! You've registered!"

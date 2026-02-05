@@ -1,0 +1,3 @@
+INFO     BASE PAGE:base_page.py:14 Visit http://frontend.niffler.dc
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "[id="stat"] h2"
+INFO     BASE COMPONENT:base_component.py:38 Checking that title "Statistics" has text "Statistics"
