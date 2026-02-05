@@ -72,7 +72,7 @@ def envs() -> Envs:
 
 
 @pytest.fixture(scope="session", autouse=True)
-def create_test_user(auth_client, db_client: UserdataDb):
+def create_test_user(auth_client):
     """Создание тестового пользователя перед всеми тестами"""
     # existing_user = db_client.get_user(os.getenv("TEST_USERNAME"))
     # print(existing_user)
