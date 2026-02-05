@@ -85,7 +85,10 @@ jobs:
       - name: Run tests
         working-directory: ./niffler-e-2-e-tests-python
         timeout-minutes: 10
-        run: pytest -n 4 --dist=worksteal
+        env:
+          CHROME_BIN: /usr/bin/google-chrome-stable
+        run: |
+          poetry run pytest -n 4 --dist=worksteal --alluredir=allure-results
 
       - name: Upload Logs as artifact
         uses: actions/upload-artifact@v4
