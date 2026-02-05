@@ -1,0 +1,3 @@
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://auth.niffler.dc:9000/login
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: POST http://auth.niffler.dc:9000/login?error
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: POST http://auth.niffler.dc:9000/login
