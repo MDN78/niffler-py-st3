@@ -66,15 +66,15 @@ def envs() -> Envs:
     )
 
 
-@pytest.fixture(scope="session")
-def db_client(envs: Envs) -> UserdataDb:
-    return UserdataDb(envs)
+# @pytest.fixture(scope="session")
+# def db_client(envs: Envs) -> UserdataDb:
+#     return UserdataDb(envs)
 
 
 @pytest.fixture(scope="session", autouse=True)
-def create_test_user(auth_client, db_client: UserdataDb):
+def create_test_user(auth_client):
     """Создание тестового пользователя перед всеми тестами"""
-    existing_user = db_client.get_user(os.getenv("TEST_USERNAME"))
-    print(existing_user)
-    if not existing_user:
-        auth_client.register(username=os.getenv("TEST_USERNAME"),password=os.getenv("TEST_PASSWORD"))
+    # existing_user = db_client.get_user(os.getenv("TEST_USERNAME"))
+    # print(existing_user)
+    # if not existing_user:
+    auth_client.register(username=os.getenv("TEST_USERNAME"),password=os.getenv("TEST_PASSWORD"))
