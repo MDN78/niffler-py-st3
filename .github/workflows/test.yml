@@ -16,7 +16,7 @@ jobs:
       - name: Create environment files
         run: |
           cat > niffler-e-2-e-tests-python/.env << EOF
-          
+          CHROME_BIN: /usr/bin/google-chrome-stable
           FRONTEND_URL: http://frontend.niffler.dc
           GATEWAY_URL: http://gateway.niffler.dc:8090
           REGISTRATION_URL: http://auth.niffler.dc:9000
@@ -36,6 +36,11 @@ jobs:
           python-version: '3.13'
           cache: 'pip'
 
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: JDK Install
         uses: actions/setup-java@v4
         with:
@@ -54,10 +59,17 @@ jobs:
 #        working-directory: ./niffler-python-tests
 #        run: pip install --upgrade -r requirements.txt
 
-      - name: Install dependencies
+#      - name: Install dependencies
+#        working-directory: ./niffler-e-2-e-tests-python
+#        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+#        run: poetry install --no-interaction --no-ansi --no-root
+
+      - name: Install dependencies with Poetry
         working-directory: ./niffler-e-2-e-tests-python
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-ansi --no-root
+        run: |
+          poetry config virtualenvs.create true
+          poetry config virtualenvs.in-project true
+          poetry install --no-interaction --no-ansi
 
       - name: Install Chrome
         run: |
