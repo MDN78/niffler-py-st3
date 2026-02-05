@@ -68,6 +68,7 @@ def envs() -> Envs:
 
 @pytest.fixture(scope="session")
 def db_client(envs: Envs) -> UserdataDb:
+
     return UserdataDb(envs)
 
 
