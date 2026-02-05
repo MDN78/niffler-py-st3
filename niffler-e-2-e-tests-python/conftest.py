@@ -5,7 +5,6 @@ import pytest
 from pytest import Item, FixtureDef, FixtureRequest
 from dotenv import load_dotenv
 
-from databases.userdata_db import UserdataDb
 from models.config import Envs
 from tools.allure.reportet import allure_reporter, allure_logger
 from tools.allure.environment import create_allure_environment_file
@@ -69,6 +68,7 @@ def envs() -> Envs:
 @pytest.fixture(scope="session", autouse=True)
 def create_test_user(auth_client, envs: Envs):
     """Создание тестового пользователя перед всеми тестами"""
-    existing_user = UserdataDb(envs).get_user(username=envs.test_username)
-    if not existing_user:
+    try:
         auth_client.register(username=envs.test_username, password=envs.test_password)
+    except Exception as e:
+        print(f"Error creating test user: {e}")
