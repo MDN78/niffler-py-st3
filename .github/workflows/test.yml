@@ -82,7 +82,6 @@ jobs:
         env:
           CHROME_BIN: /usr/bin/google-chrome-stable
         run: |
-#          poetry run pytest -n 4 --dist=worksteal --alluredir=allure-results
           poetry run pytest --alluredir=allure-results
 
       - name: Upload Logs as artifact
