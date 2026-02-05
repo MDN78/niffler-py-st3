@@ -1,9 +1,10 @@
+import pytest
+import allure
+
 from clients.category_client import CategoryHttpClient
 from databases.spend_db import SpendDb
 from marks import TestData
 from models.category import CategoryAdd
-import pytest
-import allure
 from tools.allure.annotations import AllureEpic, AllureTags, AllureFeature, AllureStory
 from tools.assertions.base import assert_greater_than_zero
 from tools.assertions.category import assert_category

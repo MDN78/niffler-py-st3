@@ -67,3 +67,8 @@ class SpendDb:
             statement = delete(SpendSQL).where(SpendSQL.username == username)
             session.exec(statement)
             session.commit()
+
+    @allure.step('Удалить из БД категории из списка')
+    def delete_categories_by_ids(self, categories_ids: list[str]):
+        for category_id in categories_ids:
+            self.delete_category(category_id)
