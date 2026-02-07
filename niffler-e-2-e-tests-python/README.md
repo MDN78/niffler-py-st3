@@ -64,6 +64,12 @@ bash docker-compose-dev.sh
 TEST_USERNAME=niffler_11St
 TEST_PASSWORD=QEwdr!ss2f
 ```
+- собрать проект командой  
+
+```terminaloutput
+bash docker-compose-dev.sh
+```
+
 - Создать и заполнить `.env` в соответствии с примером, добавив созданного тестового пользователя
 - Открыть в браузере приложение `Niffler`  - [http://frontend.niffler.dc/](http://frontend.niffler.dc/)
 - Зарегистрировать в приложении созданного тестового пользователя
@@ -73,13 +79,15 @@ TEST_PASSWORD=QEwdr!ss2f
 pytest
 ```
 
+## Удаленный запуск, через реализованный CI/CD Github Actions  
+Workflow запускается для событий Pull Request (создания, добавление коммита в ветку PR, и переоткрытия PR)  
+
+По результату автоматического прогона формируются `allure` отчеты с историей, с хранением в `Github Pages` текущего репозитория
 
 
-- собрать проект командой
 
-```terminaloutput
-bash docker-compose-dev.sh
-```
+
+
 
 - создать тестового пользователя и указать его данные в файле `.env`
   Пример тестового пользователя:
