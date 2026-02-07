@@ -134,6 +134,8 @@ allure serve
 - перейти на сайт `https://trace.playwright.dev/`
 - загрузить отчет на указанный сайт
 
+
+
 ### ****** Notes - service commands for debugging ******
 
 Запуск тестов в headed режиме с медленным выполнением для отладки
