@@ -19,7 +19,7 @@
   <img style="width: 45px; height: 45px;" src="assets/kafka.svg" alt="Apache Kafka">
   <img style="width: 45px; height: 45px;" src="assets/Git.svg" alt="Git">
   <img style="width: 45px; height: 45px;" src="assets/PostgresSQL.svg" alt="PostgreSQL">
-  <img style="width: 65px; height: 45px;" src="assets/soap.png" alt="PostgreSQL">
+  <img style="width: 85px; height: 45px;" src="assets/soap.png" alt="SOAP">
 </div>
 
 ### Особенности проекта:
