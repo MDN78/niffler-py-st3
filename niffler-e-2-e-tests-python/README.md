@@ -126,7 +126,7 @@ allure serve
 
 ![allure_result](assets/allure_result.png)
 
-<img src="assets/allure_result.png" alt="allure_result" width="400" height="200">
+<img src="assets/allure_result.png" alt="allure_result" width="450" height="250">
 
 ### Просмотр отчетов в `Playwright Trace Viewer:`:
 
