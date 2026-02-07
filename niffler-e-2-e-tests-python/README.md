@@ -19,7 +19,7 @@
   <img style="width: 45px; height: 45px;" src="assets/kafka.svg" alt="Apache Kafka">
   <img style="width: 45px; height: 45px;" src="assets/Git.svg" alt="Git">
   <img style="width: 45px; height: 45px;" src="assets/PostgresSQL.svg" alt="PostgreSQL">
-  <img style="width: 85px; height: 45px;" src="assets/soap.png" alt="SOAP">
+  <img style="width: 85px; height: 55px;" src="assets/soap.png" alt="SOAP">
 </div>
 
 ### Особенности проекта:
@@ -123,6 +123,10 @@ allure serve
 
 Сохраненные логи прогона тестов доступны в файле `log.txt` который будет сформирован в корне проекта после завершения
 тестов
+
+![allure_result](assets/allure_result.png)
+
+<img src="assets/allure_result.png" alt="allure_result" width="400" height="200">
 
 ### Просмотр отчетов в `Playwright Trace Viewer:`:
 
