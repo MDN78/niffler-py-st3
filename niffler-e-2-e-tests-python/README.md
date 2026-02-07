@@ -109,7 +109,7 @@ Workflow запускается для событий Pull Request (создан
   TEST_USERNAME → имя тестового пользователя  
   TEST_PASSWORD → пароль тестового пользователя
 
-#### Просмотр allure отчета
+### Просмотр allure отчета
 
 Выполнить команду в терминале:  
 ```commandline
@@ -130,7 +130,7 @@ allure serve
 - перейти на сайт `https://trace.playwright.dev/`
 - загрузить отчет на указанный сайт
 
-#### ****** Notes - service commands for debugging ******
+### ****** Notes - service commands for debugging ******
 
 Запуск тестов в headed режиме с медленным выполнением для отладки
 
