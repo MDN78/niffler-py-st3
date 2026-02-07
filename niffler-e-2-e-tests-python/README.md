@@ -73,21 +73,21 @@ TEST_PASSWORD=QEwdr!ss2f
 - Открыть в браузере приложение `Niffler`  - [http://frontend.niffler.dc/](http://frontend.niffler.dc/)
 - Зарегистрировать в приложении созданного тестового пользователя (не обязательное условие, главное - заполнение `env`
   файла)
-- Запустить тесты командой:  
+- Запустить тесты командой:
 
-  - стандартный запуск:
+    - стандартный запуск:
 
 ```commandline
 pytest
 ```
 
-  - параллельно
+- параллельно
 
 ```commandline
 pytest --numprocesses=2
 ```
 
-  - в `heahed` режиме
+- в `heahed` режиме
 
 ```commandline
 pytest --headed
@@ -111,12 +111,14 @@ Workflow запускается для событий Pull Request (создан
 
 ### Просмотр allure отчета
 
-Выполнить команду в терминале:  
+Выполнить команду в терминале:
+
 ```commandline
 allure serve
 ```
 
 Для отображения запросов/ответов в отчетах Allure используются:
+
 - колоризированные шаблоны из папки `resources`
 
 - применяется библиотека `jinja2`
@@ -126,15 +128,11 @@ allure serve
 
 ![allure_result](assets/allure_result.png)
 
-<img src="assets/allure_result.png" alt="allure_result" width="450" height="250">
-
 ### Просмотр отчетов в `Playwright Trace Viewer:`:
 
 - скачать отчет по нужному тесту из папки проекта `/tracing`
 - перейти на сайт `https://trace.playwright.dev/`
 - загрузить отчет на указанный сайт
-
-
 
 ### ****** Notes - service commands for debugging ******
 
