@@ -1,0 +1,16 @@
+[
+    {
+        "id": "26066f23-3a11-4c85-a456-92a9f6046bc2",
+        "spendDate": "2025-04-07T21:00:00.000+00:00",
+        "category": {
+            "id": "45941112-2223-4dfe-9f03-93a8e4b6b38e",
+            "name": "database",
+            "username": "niffler_st3",
+            "archived": false
+        },
+        "currency": "RUB",
+        "amount": 100.0,
+        "description": "some",
+        "username": "niffler_st3"
+    }
+]

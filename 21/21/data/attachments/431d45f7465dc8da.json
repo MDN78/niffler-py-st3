@@ -1,0 +1,14 @@
+{
+    "id": "d126e10d-92a5-450b-b852-fb98ce918afa",
+    "spendDate": "2025-11-01T21:59:43.873+00:00",
+    "category": {
+        "id": "f852ee62-c82f-471b-8300-87c33f54b16c",
+        "name": "Lake Joseph",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 0.01,
+    "description": "New Cynthiaside",
+    "username": "niffler_st3"
+}

@@ -1,0 +1,3 @@
+SELECT category.id AS category_id, category.name AS category_name, category.username AS category_username, category.archived AS category_archived 
+FROM category 
+WHERE category.id = 45941112-2223-4dfe-9f03-93a8e4b6b38e
