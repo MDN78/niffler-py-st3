@@ -51,7 +51,6 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-
 - Установить зависимости проекта из файла при помощи `Poetry`
 - В соответствии с инструкцией установить [Allure](https://allurereport.org/docs/install/)
 - Запустить приложение `Niffler` командой через `bash` терминал:
