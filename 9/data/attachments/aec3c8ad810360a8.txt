@@ -1,9 +1,0 @@
-INFO     BASE PAGE:base_page.py:14 Visit http://frontend.niffler.dc
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "input[name=username]"
-INFO     INPUT:input.py:18 Fill input "username" to value "niffler_st3"
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "input[name=password]"
-INFO     INPUT:input.py:18 Fill input "password" to value "Qwdr!ss2"
-INFO     BUTTON:button.py:16 Clicking button with name "submit"
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "button[type=submit]"
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "[id="spendings"]>h2"
-INFO     BASE COMPONENT:base_component.py:38 Checking that text "spending title" has text "History of Spendings"

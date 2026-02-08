@@ -1,7 +1,0 @@
-INFO     TEMPLATES XML READER:read_templates.py:8 Read template for User: user_28560_teresa28
-INFO     API REQUESTS:allure_helper.py:99 SOAP REQUEST POST http://localhost:8089/ws
-INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 200
-INFO     SOAP ASSERTIONS:soap.py:28 Check SOAP response
-INFO     BASE ASSERTIONS:base.py:35 Check that "username in SOAP message" equals to user_28560_teresa28
-INFO     BASE ASSERTIONS:base.py:109 Check that "users ID" non exists
-INFO     BASE ASSERTIONS:base.py:109 Check that "users fullname" non exists

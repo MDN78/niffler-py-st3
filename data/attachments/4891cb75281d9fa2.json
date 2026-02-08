@@ -1,0 +1,14 @@
+{
+    "id": "fa22a107-3c96-42eb-a6aa-5fa402d00a84",
+    "spendDate": "2025-03-09T08:56:01.047+00:00",
+    "category": {
+        "id": "83d1dda1-c985-426b-a3fe-464d9ca64bbf",
+        "name": "country",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 94.0,
+    "description": "Herrerafurt",
+    "username": "niffler_st3"
+}

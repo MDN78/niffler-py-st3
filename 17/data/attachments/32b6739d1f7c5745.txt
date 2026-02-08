@@ -1,3 +1,0 @@
-SELECT spend.id, spend.username, spend.amount, spend.description, spend.category_id, spend.spend_date, spend.currency, category.id AS id_1, category.name, category.username AS username_1, category.archived 
-FROM spend JOIN category ON spend.category_id = category.id 
-WHERE spend.username = niffler_st3

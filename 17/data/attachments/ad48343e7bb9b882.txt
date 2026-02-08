@@ -1,3 +1,0 @@
-INFO     BASE PAGE:base_page.py:14 Visit http://frontend.niffler.dc/profile
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: ".MuiTypography-root.MuiTypography-h5.css-w1t7b3"
-INFO     BASE COMPONENT:base_component.py:38 Checking that title "title" has text "Profile"

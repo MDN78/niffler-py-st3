@@ -1,4 +1,0 @@
-INFO     SQL USERS DATES:userdata_db.py:28 select niffler-userdata
-INFO     SQL USERS DATES:userdata_db.py:28 select niffler-userdata
-INFO     SQL USERS DATES:userdata_db.py:28 show niffler-userdata
-INFO     SQL USERS DATES:userdata_db.py:28 SELECT niffler-userdata

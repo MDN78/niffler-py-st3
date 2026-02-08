@@ -1,3 +1,0 @@
-SELECT "user".id, "user".username, "user".password, "user".enabled, "user".account_non_expired, "user".account_non_locked, "user".credentials_non_expired 
-FROM "user" 
-WHERE "user".username = user_99748_shawnmckay

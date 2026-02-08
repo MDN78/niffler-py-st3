@@ -1,1 +1,0 @@
-DELETE FROM spend WHERE spend.username = niffler_st3

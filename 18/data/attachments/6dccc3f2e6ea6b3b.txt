@@ -1,9 +1,0 @@
-INFO     BASE PAGE:base_page.py:14 Visit http://frontend.niffler.dc/profile
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "#name"
-INFO     INPUT:input.py:29 Prepare input "name" for adding new name"
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "#name"
-INFO     INPUT:input.py:18 Fill input "name" to value "user_21432_johnhoffman"
-INFO     BUTTON:button.py:16 Clicking button with name "submit"
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "button[type=submit]"
-INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "div[role="alert"] div:nth-child(2)"
-INFO     BASE COMPONENT:base_component.py:38 Checking that text "alert" has text "Profile successfully updated"

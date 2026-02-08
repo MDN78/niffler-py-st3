@@ -1,0 +1,14 @@
+{
+    "id": "b6d6d0dd-aa6b-4753-b236-867fb3da531f",
+    "spendDate": "2025-11-30T09:16:57.837+00:00",
+    "category": {
+        "id": "f8498b04-a157-4970-9125-ce97846dd022",
+        "name": "city",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 49.0,
+    "description": "West Melanieview",
+    "username": "niffler_st3"
+}
