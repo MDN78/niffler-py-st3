@@ -68,11 +68,6 @@ jobs:
           poetry config virtualenvs.in-project true
           poetry install --no-interaction --no-ansi --no-root
 
-#      - name: Install Chrome
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y google-chrome-stable
-
       - name: Install Playwright browsers
         working-directory: ./niffler-e-2-e-tests-python
         run: |
@@ -107,7 +102,9 @@ jobs:
         with:
           allure_results: niffler-e-2-e-tests-python/allure-results
           allure_history: niffler-e-2-e-tests-python/allure-history
-#          allure_report: niffler-e-2-e-tests-python/allure-report
+          allure_report: niffler-e-2-e-tests-python/allure-report
+          gh_pages: gh-pages
+          subfolder: ${{ github.run_number }}
 
       - name: Upload Allure Report as artifact
         if: always()
