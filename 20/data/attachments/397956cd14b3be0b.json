@@ -1,0 +1,14 @@
+{
+    "id": "649cf100-0474-4ed8-a531-81ea3a1abe36",
+    "spendDate": "2025-12-22T01:51:08.320+00:00",
+    "category": {
+        "id": "3a60729b-819a-4375-81a3-6900caa46a8b",
+        "name": "QA.GURU",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 30.0,
+    "description": "New description",
+    "username": "niffler_st3"
+}

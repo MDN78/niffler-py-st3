@@ -1,0 +1,14 @@
+{
+    "id": "b29229e5-2182-4599-bac7-32bd79752cdd",
+    "spendDate": "2025-11-12T17:59:07.759+00:00",
+    "category": {
+        "id": "8775fd08-de5e-49de-a89d-d655e209ad15",
+        "name": "database",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 58.0,
+    "description": "Lisatown",
+    "username": "niffler_st3"
+}

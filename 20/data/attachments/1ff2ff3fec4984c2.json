@@ -1,0 +1,14 @@
+{
+    "id": "5abe244d-080a-4ca1-8cab-9a2a64aba3b4",
+    "spendDate": "2025-06-23T19:22:56.051+00:00",
+    "category": {
+        "id": "d4e1715c-a152-4a0f-aece-c63cef60ff4e",
+        "name": "Ramirezstad",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 21.0,
+    "description": "",
+    "username": "niffler_st3"
+}

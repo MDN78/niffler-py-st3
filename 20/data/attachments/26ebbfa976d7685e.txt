@@ -1,0 +1,14 @@
+INFO     KAFKA CLIENT:kafka_client.py:80 users offsets: {0: 0, 1: 0, 2: 2, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://auth.niffler.dc:9000/register?redirect_uri=http%3A%2F%2Fauth.niffler.dc%3A9000%2Fregister
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: POST http://auth.niffler.dc:9000/register
+INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 201
+DEBUG    WAITER FOR KAFKA:waiters.py:19 1770581642.865786 start waiting
+DEBUG    KAFKA CLIENT:kafka_client.py:57 b'{"username":"user_92189_callahaneric"}'
+INFO     KAFKA CLIENT:kafka_client.py:73 b'{"username":"user_92189_callahaneric"}'
+INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 201
+INFO     KAFKA ASSERTIONS:kafka.py:21 Check kafka message content
+INFO     BASE ASSERTIONS:base.py:35 Check that "kafka content" equals to user_92189_callahaneric
+INFO     KAFKA ASSERTIONS:kafka.py:33 Check that message from kafka exist
+INFO     BASE ASSERTIONS:base.py:53 Check that "message kafka exist" unequals to zero
+INFO     KAFKA ASSERTIONS:kafka.py:33 Check that message from kafka exist
+INFO     BASE ASSERTIONS:base.py:53 Check that "message kafka exist" unequals to zero
