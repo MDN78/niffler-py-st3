@@ -71,4 +71,4 @@ def create_test_user(auth_client, envs: Envs):
     try:
         auth_client.register(username=envs.test_username, password=envs.test_password)
     except Exception as e:
-        print(f"Error creating test user: {e}")
+        print(f"Error creating test user (user exists) : {e}")
