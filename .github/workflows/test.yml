@@ -94,14 +94,16 @@ jobs:
         continue-on-error: true
         with:
           ref: gh-pages
-          path: niffler-e-2-e-tests-python/allure-history
+          path: gh-pages
+#          path: niffler-e-2-e-tests-python/allure-history
 
       - name: Generate Allure Report
         if: always()
         uses: simple-elf/allure-report-action@master
         with:
           allure_results: niffler-e-2-e-tests-python/allure-results
-          allure_history: niffler-e-2-e-tests-python/allure-history
+          allure_history: gh-pages/history
+#          allure_history: niffler-e-2-e-tests-python/allure-history
           allure_report: niffler-e-2-e-tests-python/allure-report
           gh_pages: gh-pages
           subfolder: ${{ github.run_number }}
@@ -120,5 +122,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: niffler-e-2-e-tests-python/allure-history
+          publish_dir: niffler-e-2-e-tests-python/allure-report
+#          publish_dir: niffler-e-2-e-tests-python/allure-history
           keep_files: true

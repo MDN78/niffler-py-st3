@@ -148,6 +148,7 @@ debug devtools
 setTimeout('debugger;', 5_000)
 ```
 
+
 Завершить процессы postgres для освобождения порта - команда терминала:
 
 ```commandline
