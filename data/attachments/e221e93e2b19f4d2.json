@@ -1,0 +1,14 @@
+{
+    "id": "38ede8e9-931e-41b7-a499-b9b7cbbaae87",
+    "spendDate": "2025-03-15T17:56:25.948+00:00",
+    "category": {
+        "id": "fc1fa59b-50e2-41d6-9c09-080f479423c9",
+        "name": "vehicles",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 70.0,
+    "description": "New Roberttown",
+    "username": "niffler_st3"
+}

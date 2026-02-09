@@ -1,0 +1,14 @@
+{
+    "id": "cea49152-8150-4f4c-ad76-d54dcce4ae64",
+    "spendDate": "2025-07-12T18:02:26.236+00:00",
+    "category": {
+        "id": "fea3e094-c946-4f56-b8bb-3366c03ce71b",
+        "name": "vehicles",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 30.0,
+    "description": "New Jamesside",
+    "username": "niffler_st3"
+}

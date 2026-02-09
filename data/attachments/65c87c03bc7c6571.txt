@@ -1,0 +1,11 @@
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: POST http://gateway.niffler.dc:8090/api/spends/add
+INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 201
+INFO     SPENDS ASSERTIONS:spends.py:19 Check spend
+INFO     BASE ASSERTIONS:base.py:35 Check that "amount" equals to 0.01
+INFO     BASE ASSERTIONS:base.py:35 Check that "currency" equals to RUB
+INFO     BASE ASSERTIONS:base.py:35 Check that "description" equals to New Cynthiaside
+INFO     BASE ASSERTIONS:base.py:35 Check that "category" equals to Lake Joseph
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: DELETE http://gateway.niffler.dc:8090/api/spends/remove?ids=15d293da-9a4a-4876-8763-b3babb0b9ebe
+INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 200
+INFO     SQL DATABASE SPENDS AND CATEGORY:spend_db.py:28 SELECT niffler-spend
+INFO     SQL DATABASE SPENDS AND CATEGORY:spend_db.py:28 DELETE niffler-spend
