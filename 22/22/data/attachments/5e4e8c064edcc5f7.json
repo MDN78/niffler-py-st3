@@ -1,0 +1,14 @@
+{
+    "id": "4a1f07d2-1a11-4a75-969f-3c24c84428ec",
+    "spendDate": "2026-01-25T03:08:50.215+00:00",
+    "category": {
+        "id": "8b183dd6-4458-420d-8e8c-6062e1b53d9e",
+        "name": "school",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 55.0,
+    "description": "Joshuaborough",
+    "username": "niffler_st3"
+}

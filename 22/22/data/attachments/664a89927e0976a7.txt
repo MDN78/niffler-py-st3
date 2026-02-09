@@ -1,0 +1,5 @@
+INFO     BASE PAGE:base_page.py:14 Visit http://frontend.niffler.dc/profile
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "#category"
+INFO     INPUT:input.py:18 Fill input "input category" to value "  "
+INFO     BASE COMPONENT:base_component.py:24 Getting locator name: "div[role="alert"] div:nth-child(2)"
+INFO     BASE COMPONENT:base_component.py:38 Checking that text "alert" has text "Error while adding category : Category can not be blank"

@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset = UTF-8">
+    <script src="https://yastatic.net/jquery/2.2.3/jquery.min.js" crossorigin="anonymous"></script>
+
+    <link href="https://yastatic.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <link type="text/css" href="https://yandex.st/highlightjs/8.0/styles/github.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/bash.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/json.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/xml.min.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <pre><code>POST to http://gateway.niffler.dc:8090/api/spends/add</code></pre>
+</div>
+
+
+    <h4>Body</h4>
+    <div>
+        <pre><code>b'{"amount": 58, "description": "Lisatown", "category": {"name": "database", "username": null, "archived": null}, "spendDate": "2025-11-13T15:58:13.759Z", "currency": "RUB"}'</code></pre>
+    </div>
+
+
+
+
+    <h4>Headers</h4>
+    <div>
+    
+        <div>
+            <pre><code><b>User-Agent</b>: python-requests/2.32.5</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Accept-Encoding</b>: gzip, deflate</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Accept</b>: application/json</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Connection</b>: keep-alive</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Authorization</b>: Bearer eyJraWQiOiJhMGMyZjdlZS04MWQyLTQ0NGYtYTE3NC0xMTJiMTQ4ZmYzZDgiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJuaWZmbGVyX3N0MyIsImF1ZCI6ImNsaWVudCIsIm5iZiI6MTc3MDY2MDc0OSwic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9hdXRoLm5pZmZsZXIuZGM6OTAwMCIsImV4cCI6MTc3MDY2NDM0OSwiaWF0IjoxNzcwNjYwNzQ5LCJqdGkiOiIzMGU2MWM3MS1iYWNiLTQzYWItYmQyMS1mZGViM2QzNGNhNDUifQ.JyyYRz5BpR0qOiPZn5Mx6xRMtg3_pCbV6jbT25zOgs7Yj6rUtkS0BmnLqOQcf5ny4s-G1AHYL1TEbvXFAZJgghxVeD0gzWMHzeQ6vKgkJmVyO0_eaR5yN6Fn3FHr4RMzScE24X2c2FkPFQirssboS8DWgnMkdxO9rQxfHSBh7xchgNrpRcbY_zkBEc8tqlho9S7aMbTtFc-XkjrWm-XGhrwpEpKq-rOTu8S4rl_skfmvZHESItanoqNmZNseGHLKAOAWqOUehrmMZg9IchOZ5BJUgBRyBMVvTFEU7z65-fyFbVoEszODlZa7zvb0gyB-_IrrkHg_pDIaIDfoIi5RWA</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Content-Type</b>: application/json</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Content-Length</b>: 171</code></pre>
+        </div>
+    
+    </div>
+
+
+
+
+
+
+    <h4>Curl</h4>
+    <div>
+        <pre><code>curl -H 'User-Agent: python-requests/2.32.5' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJraWQiOiJhMGMyZjdlZS04MWQyLTQ0NGYtYTE3NC0xMTJiMTQ4ZmYzZDgiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJuaWZmbGVyX3N0MyIsImF1ZCI6ImNsaWVudCIsIm5iZiI6MTc3MDY2MDc0OSwic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9hdXRoLm5pZmZsZXIuZGM6OTAwMCIsImV4cCI6MTc3MDY2NDM0OSwiaWF0IjoxNzcwNjYwNzQ5LCJqdGkiOiIzMGU2MWM3MS1iYWNiLTQzYWItYmQyMS1mZGViM2QzNGNhNDUifQ.JyyYRz5BpR0qOiPZn5Mx6xRMtg3_pCbV6jbT25zOgs7Yj6rUtkS0BmnLqOQcf5ny4s-G1AHYL1TEbvXFAZJgghxVeD0gzWMHzeQ6vKgkJmVyO0_eaR5yN6Fn3FHr4RMzScE24X2c2FkPFQirssboS8DWgnMkdxO9rQxfHSBh7xchgNrpRcbY_zkBEc8tqlho9S7aMbTtFc-XkjrWm-XGhrwpEpKq-rOTu8S4rl_skfmvZHESItanoqNmZNseGHLKAOAWqOUehrmMZg9IchOZ5BJUgBRyBMVvTFEU7z65-fyFbVoEszODlZa7zvb0gyB-_IrrkHg_pDIaIDfoIi5RWA' -H 'Content-Type: application/json' -H 'Content-Length: 171' -d '{"amount": 58, "description": "Lisatown", "category": {"name": "database", "username": null, "archived": null}, "spendDate": "2025-11-13T15:58:13.759Z", "currency": "RUB"}' http://gateway.niffler.dc:8090/api/spends/add</code></pre>
+    </div>
+
+</body>
+</html>

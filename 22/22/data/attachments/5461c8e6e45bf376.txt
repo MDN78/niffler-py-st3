@@ -1,0 +1,12 @@
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: POST http://gateway.niffler.dc:8090/api/spends/add
+INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 201
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: DELETE http://gateway.niffler.dc:8090/api/spends/remove?ids=c7a34193-63e4-4626-a672-dcc9fb680d23
+INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 200
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all
+INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 200
+INFO     BASE ASSERTIONS:base.py:72 Check that length of "Model spends" equals to 0
+INFO     SQL DATABASE SPENDS AND CATEGORY:spend_db.py:28 SELECT niffler-spend
+INFO     SQL DATABASE SPENDS AND CATEGORY:spend_db.py:28 DELETE niffler-spend
+INFO     FIXTURES:client_fixtures.py:84 Delete spend
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all
+INFO     BASE ASSERTIONS:base.py:17 Check that response status code equals to 200
