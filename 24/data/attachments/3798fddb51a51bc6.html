@@ -1,0 +1,215 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset = UTF-8">
+    <script src="https://yastatic.net/jquery/2.2.3/jquery.min.js" crossorigin="anonymous"></script>
+
+    <link href="https://yastatic.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <link type="text/css" href="https://yandex.st/highlightjs/8.0/styles/github.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/bash.min.js"></script>
+    <script type="text/javascript" src="https://yastatic.net/highlightjs/8.0/languages/json.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/xml.min.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;
+        }
+        .status-success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .status-error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .status-info {
+            color: #17a2b8;
+            font-weight: bold;
+        }
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <pre><code>Response:
+    <span class="status-success">
+        200 
+    </span>
+    Time: 0.006146 seconds
+    </code></pre>
+</div>
+
+
+    <h4 class="section-title">Response Headers</h4>
+    <div>
+    
+        <div>
+            <pre><code><b>Vary</b>: Origin, Access-Control-Request-Method, Access-Control-Request-Headers</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Set-Cookie</b>: XSRF-TOKEN=ca1e3c18-8607-4a35-9f8c-0cf7b4790fe7; Path=/</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>X-XSRF-TOKEN</b>: ca1e3c18-8607-4a35-9f8c-0cf7b4790fe7</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>X-Content-Type-Options</b>: nosniff</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>X-XSS-Protection</b>: 0</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Cache-Control</b>: no-cache, no-store, max-age=0, must-revalidate</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Pragma</b>: no-cache</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Expires</b>: 0</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>X-Frame-Options</b>: DENY</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Content-Type</b>: text/html;charset=UTF-8</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Content-Language</b>: en-US</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Transfer-Encoding</b>: chunked</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Date</b>: Mon, 09 Feb 2026 18:36:03 GMT</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Keep-Alive</b>: timeout=60</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Connection</b>: keep-alive</code></pre>
+        </div>
+    
+    </div>
+
+
+
+    <h4 class="section-title">Response Cookies</h4>
+    <div>
+    
+        <div>
+            <pre><code><b>XSRF-TOKEN</b>: ca1e3c18-8607-4a35-9f8c-0cf7b4790fe7</code></pre>
+        </div>
+    
+    </div>
+
+
+
+    <h4 class="section-title">Response Body (Text)</h4>
+    <div>
+        <pre><code class="xml"><!DOCTYPE HTML>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login to Niffler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link href="styles/styles.css" rel="stylesheet"
+          type="text/css"/>
+</head>
+<body>
+<main class="content">
+    <div class="content__wrapper">
+        <div class="main__hero"></div>
+        <section class="main__form">
+            <div class="logo-section">
+                <img class="logo-section__logo" src="images/coin.svg" width="36" alt="Niffler logo"/>
+                <p class="logo-section__text">
+                    Niffler
+                </p>
+            </div>
+            <div class="form-section">
+                <form class="form" action="/login" method="post"><input type="hidden" name="_csrf" value="ca1e3c18-8607-4a35-9f8c-0cf7b4790fe7"/>
+                    <h1 class="header">Log in</h1>
+                    
+                    
+                    <label class="form__label">Username
+                        <input class="form__input"
+                               type="text"
+                               name="username"
+                               placeholder="Type your username"
+                               autocomplete="false"
+                               required/>
+                    </label>
+                    <label class="form__label">Password
+                        <input class="form__input"
+                               type="password"
+                               name="password"
+                               placeholder="Type your password"
+                               autocomplete="false"
+                               required/>
+                        <button type="button" class="form__password-button"></button>
+                    </label>
+                    <button class="form__submit" type="submit">
+                        Log in
+                    </button>
+                    <span class="divider"></span>
+                    <a class="form__register" href="/register">Create new account</a>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+<script>
+    const passwordButton = document.querySelector(".form__password-button");
+    const passwordInput = document.querySelector("[name=password]");
+
+    const togglePasswordInputType = (inputType) => {
+        return inputType === "password" ? "text" : "password";
+    }
+
+    const togglePasswordButtonClass = () => {
+        passwordButton.classList.toggle("form__password-button_active");
+    }
+
+    const handlePasswordButtonClick = () => {
+        passwordInput.setAttribute("type", togglePasswordInputType(passwordInput.getAttribute("type")));
+        togglePasswordButtonClass();
+    }
+
+    passwordButton.addEventListener("click", handlePasswordButtonClick);
+</script>
+</body>
+</html>
+</code></pre>
+    </div>
+
+
+
+    <h4 class="section-title">Final URL</h4>
+    <div>
+        <pre><code>http://auth.niffler.dc:9000/login</code></pre>
+    </div>
+
+</body>
+</html>

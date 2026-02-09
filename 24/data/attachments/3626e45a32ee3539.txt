@@ -1,0 +1,13 @@
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://auth.niffler.dc:9000/login
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: POST http://frontend.niffler.dc/authorized?code=tfslY89xY5DHPs--JXYHsRgsDEUyh9Z-DPNtkTkpJy82kIdV-x6jHFKlRVrzR4eto3foTk2aRxlYk-WusxJXqfzj4MOI5cncxFZTAdTTdNFtc_NdXq9wHh_oGWW2HzlT
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: POST http://auth.niffler.dc:9000/oauth2/token
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/categories/all?archived=False
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all?filterCurrency=RUB
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all?filterCurrency=KZT
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all?filterCurrency=USD
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all?filterCurrency=EUR
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/categories/all?archived=False
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all?filterCurrency=RUB
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all?filterCurrency=KZT
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all?filterCurrency=USD
+INFO     API REQUESTS:allure_helper.py:58 API: Method and URL: GET http://gateway.niffler.dc:8090/api/spends/all?filterCurrency=EUR

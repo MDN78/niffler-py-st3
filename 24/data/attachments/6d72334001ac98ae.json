@@ -1,0 +1,14 @@
+{
+    "id": "ab2d3de9-1a35-4ccf-a391-10a5d87ac22f",
+    "spendDate": "2025-03-18T20:47:23.712+00:00",
+    "category": {
+        "id": "e67d7606-3ee6-48be-90e5-1080c587995c",
+        "name": "car",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 44.0,
+    "description": "QA.GURU Python Advanced 2",
+    "username": "niffler_st3"
+}

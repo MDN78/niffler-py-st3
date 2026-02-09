@@ -1,0 +1,14 @@
+{
+    "id": "e796209f-d6c5-449d-a28e-c5406ea997f5",
+    "spendDate": "2025-03-10T16:16:43.350+00:00",
+    "category": {
+        "id": "bba6e0fd-1365-42e3-b5d6-e24e7fa1b1f2",
+        "name": "Lake Chad",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 85.0,
+    "description": "Port Keith",
+    "username": "niffler_st3"
+}
