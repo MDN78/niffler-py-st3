@@ -98,7 +98,7 @@ pytest --headed
 Workflow запускается для событий Pull Request (создания, добавление коммита в ветку PR, и переоткрытия PR)
 
 По результату автоматического прогона формируются `allure` отчеты с историей, с хранением
-в [GitHub Pages](https://mdn78.github.io/niffler-py-st3/18/index.html) текущего репозитория
+в [GitHub Pages](https://mdn78.github.io/niffler-py-st3/24/index.html) текущего репозитория
 
 Для корректного запуска workflow необходимо прописать тестового пользователя в приватных переменных в GitHub Actions -
 используйте секреты (secrets)
