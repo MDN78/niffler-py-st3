@@ -1,0 +1,16 @@
+[
+    {
+        "id": "741c6dd8-2175-41ab-9231-198569168e7d",
+        "spendDate": "2025-04-12T21:00:00.000+00:00",
+        "category": {
+            "id": "c3b63ea4-7d20-408c-a007-5b630b59cef9",
+            "name": "country",
+            "username": "niffler_st3",
+            "archived": false
+        },
+        "currency": "USD",
+        "amount": 94.0,
+        "description": "Herrerafurt",
+        "username": "niffler_st3"
+    }
+]

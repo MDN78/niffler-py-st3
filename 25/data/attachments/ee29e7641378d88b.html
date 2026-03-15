@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset = UTF-8">
+    <script src="https://yastatic.net/jquery/2.2.3/jquery.min.js" crossorigin="anonymous"></script>
+
+    <link href="https://yastatic.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <link type="text/css" href="https://yandex.st/highlightjs/8.0/styles/github.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/bash.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/json.min.js"></script>
+    <script type="text/javascript" src="https://yandex.st/highlightjs/8.0/languages/xml.min.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <pre><code>PATCH to http://gateway.niffler.dc:8090/api/spends/edit</code></pre>
+</div>
+
+
+    <h4>Body</h4>
+    <div>
+        <pre><code>{"id":"96acfed4-4f32-45ec-8e15-36d829bc1a92","amount":70.0,"description":"for test","category":{"id":"71ebba4d-fb55-48b8-86f1-49894e94f8e7","name":"vehicles","username":"niffler_st3","archived":false},"spendDate":"2025-04-18T15:51:49.948000Z","currency":"RUB","username":"niffler_st3"}</code></pre>
+    </div>
+
+
+
+
+    <h4>Headers</h4>
+    <div>
+    
+        <div>
+            <pre><code><b>User-Agent</b>: python-requests/2.32.5</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Accept-Encoding</b>: gzip, deflate</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Accept</b>: application/json</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Connection</b>: keep-alive</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Authorization</b>: Bearer eyJraWQiOiJkNDU2M2NiNC03NGI5LTQ1MWItYWY4Ni03Zjg0YWNmOWMyMzMiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJuaWZmbGVyX3N0MyIsImF1ZCI6ImNsaWVudCIsIm5iZiI6MTc3MzU5MTUzMywic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9hdXRoLm5pZmZsZXIuZGM6OTAwMCIsImV4cCI6MTc3MzU5NTEzMywiaWF0IjoxNzczNTkxNTMzLCJqdGkiOiI5OTE0OWNlNC0wYzg5LTQ0MDMtYjhjMC0zMmM1YTc4NWNjZTAifQ.PqFM7gcw8yQNHxKkHGHkFrPV_oojiORFqK4ywWrtD_yq6dn50_jb6kxWrCC11xYlHuS04MpCNrYzDQN1is55Ro8TnqoindlP74GYPyBCyivI6aRzK8qtWoYDtsLv1MwFsyFK0ebnaNFXLJYSB9WI0MEVGBic5Qj0qqzTzokScNZBjQBsb3RcKWKgTKGdxvcTCfeyDq2TLEGBTOTtPnebYCp0JnWCNz-8qr1rVn_AbLFTZMCJ7Q6VJUfCaiwmQCDekNMej0N5kHKplu_ielWFhlDXHT9NiXvvjTU7v9isdnaNszlakmfeDEsKzU9Z_n5F3DF2xI7TNN4H6mRTvfFK_g</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Content-Type</b>: application/json</code></pre>
+        </div>
+    
+        <div>
+            <pre><code><b>Content-Length</b>: 285</code></pre>
+        </div>
+    
+    </div>
+
+
+
+
+
+
+    <h4>Curl</h4>
+    <div>
+        <pre><code>curl -X PATCH -H 'User-Agent: python-requests/2.32.5' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJraWQiOiJkNDU2M2NiNC03NGI5LTQ1MWItYWY4Ni03Zjg0YWNmOWMyMzMiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJuaWZmbGVyX3N0MyIsImF1ZCI6ImNsaWVudCIsIm5iZiI6MTc3MzU5MTUzMywic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9hdXRoLm5pZmZsZXIuZGM6OTAwMCIsImV4cCI6MTc3MzU5NTEzMywiaWF0IjoxNzczNTkxNTMzLCJqdGkiOiI5OTE0OWNlNC0wYzg5LTQ0MDMtYjhjMC0zMmM1YTc4NWNjZTAifQ.PqFM7gcw8yQNHxKkHGHkFrPV_oojiORFqK4ywWrtD_yq6dn50_jb6kxWrCC11xYlHuS04MpCNrYzDQN1is55Ro8TnqoindlP74GYPyBCyivI6aRzK8qtWoYDtsLv1MwFsyFK0ebnaNFXLJYSB9WI0MEVGBic5Qj0qqzTzokScNZBjQBsb3RcKWKgTKGdxvcTCfeyDq2TLEGBTOTtPnebYCp0JnWCNz-8qr1rVn_AbLFTZMCJ7Q6VJUfCaiwmQCDekNMej0N5kHKplu_ielWFhlDXHT9NiXvvjTU7v9isdnaNszlakmfeDEsKzU9Z_n5F3DF2xI7TNN4H6mRTvfFK_g' -H 'Content-Type: application/json' -H 'Content-Length: 285' -d '{"id":"96acfed4-4f32-45ec-8e15-36d829bc1a92","amount":70.0,"description":"for test","category":{"id":"71ebba4d-fb55-48b8-86f1-49894e94f8e7","name":"vehicles","username":"niffler_st3","archived":false},"spendDate":"2025-04-18T15:51:49.948000Z","currency":"RUB","username":"niffler_st3"}' http://gateway.niffler.dc:8090/api/spends/edit</code></pre>
+    </div>
+
+</body>
+</html>

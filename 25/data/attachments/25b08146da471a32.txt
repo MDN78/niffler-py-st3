@@ -1,0 +1,8 @@
+INFO     gRPC logging Interceptor:logging.py:15 Method /guru.qa.grpc.niffler.NifflerCurrencyService/CalculateRate
+INFO     gRPC logging Interceptor:logging.py:16 gRPC message CalculateRequest
+INFO     gRPC logging Interceptor:logging.py:17 gRPC message spendCurrency: EUR
+desiredCurrency: RUB
+amount: 100
+
+INFO     gRPC Allure logging Interceptor:allure.py:18 gRPC Allure Method /guru.qa.grpc.niffler.NifflerCurrencyService/CalculateRate
+INFO     BASE ASSERTIONS:base.py:35 Check that "calculate rate EUR/RUB" equals to 7200

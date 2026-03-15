@@ -1,0 +1,14 @@
+{
+    "id": "96acfed4-4f32-45ec-8e15-36d829bc1a92",
+    "spendDate": "2025-04-18T15:51:49.948+00:00",
+    "category": {
+        "id": "71ebba4d-fb55-48b8-86f1-49894e94f8e7",
+        "name": "vehicles",
+        "username": "niffler_st3",
+        "archived": false
+    },
+    "currency": "RUB",
+    "amount": 70.0,
+    "description": "for test",
+    "username": "niffler_st3"
+}
