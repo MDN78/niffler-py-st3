@@ -31,6 +31,7 @@ jobs:
           TEST_PASSWORD=$TEST_PASSWORD
           KAFKA_ADDRESS=localhost
           SOAP_ADDRESS=http://localhost:8089/ws
+          GRPC_PORT=localhost:8092
           EOF
           
           echo "=== Content of .env file ==="
@@ -95,7 +96,6 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-#          path: niffler-e-2-e-tests-python/allure-history
 
       - name: Generate Allure Report
         if: always()
@@ -103,10 +103,8 @@ jobs:
         with:
           allure_results: niffler-e-2-e-tests-python/allure-results
           allure_history: gh-pages/history
-#          allure_history: niffler-e-2-e-tests-python/allure-history
           allure_report: niffler-e-2-e-tests-python/allure-report
           gh_pages: gh-pages
-#          subfolder: ${{ github.run_number }}
           keep_reports: 20
 
       - name: Upload Allure Report as artifact
@@ -123,6 +121,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: gh-pages/history
-#          publish_dir: niffler-e-2-e-tests-python/allure-report
-#          publish_dir: niffler-e-2-e-tests-python/allure-history
           keep_files: true
