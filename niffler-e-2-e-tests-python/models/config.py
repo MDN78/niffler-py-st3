@@ -13,3 +13,4 @@ class Envs(BaseModel):
     userdata_db_url: str
     auth_db_url: str
     soap_address: str
+    grpc_port: str
